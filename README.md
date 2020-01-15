@@ -1,6 +1,4 @@
-# Full Stack Project
-
-> The Project Planning section **should be completed** for your project pitch with instructors.
+# Resolve
 
 - [Full Stack Project](#Full-Stack-Project)
   - [Overview](#Overview)
@@ -28,37 +26,37 @@
 
 ## Overview
 
-_**Project Title** is lorem ipsum dolor sit amet. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+_**Resolve** is an app that helps users track personal goals. Users can create a profile where they can add new goals, list their motivation for achieving said goal, and outline a plan for success. Users can view the goals of others who have created a Resolve profile. In addition to adding new goals, they can also delete and edit the goals associated with their own profile._
 
 ### Team Members
 
-Created, designed, and developed by [James Madison](), [George Washington](), and [John Lansing, Jr.]() (Git Czar) for the General Assembly Software Engineering Immersive (November '19 Cohort) Unit 3 Project. 
+Created, designed, and developed by [Abir Tawfique](https://github.com/atawfique21) (Git Czar), [Revati Rajabhathor](https://github.com/revatir/), and [Hannah Reilly.](https://github.com/hannahreilly) for the General Assembly Software Engineering Immersive (November '19 Cohort) Unit 3 Project. 
 
 ### Team Expectations
 
-Team values and expectations can be found on our project's [Google document]().
+Team values and expectations can be found on our project's [Google document](https://docs.google.com/document/d/1XQoBhwaGt2R_0uzK4zXX5aQ1t1idnjkVGZ2qIJdyLV4/edit?usp=sharing).
 
 ### Permissions
 
-Digital assets used with full licensing and permission from [Death to Stock Photo](), [Freepik](), and [Unsplash](). Custom digital design and branding by John Lansing. Digital assets stored locally and on [Imgur]().
+Digital assets stored locally and on [Imgur](https://imgur.com/).
 
 <br>
 
 ## MVP
 
-> The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
+_**Resolve** is an app that helps users track personal goals. Users can create a profile where they can add new goals, list their motivation for achieving said goal, and outline a plan for success. Users can view the goals of others who have created a Resolve profile. In addition to adding new goals, they can also delete and edit the goals associated with their own profile._
 
-_The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
 
 <br>
 
 ### MVP Goals
 
-- _Lorem ipsum, dolor sit amet,_
-- _consectetur adipiscing elit._
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
+- _Allow users to log-in/log-out._
+- _Allow users to register for the website and create a new profile._
+- _Allow users to add, delete, and edit the goals on their own profile._
+-_Allow users to mark goals as complete._
+-_Have completed goals change color._
+- _Once logged in, allow users to click on other user profiles and view their goals (without power to add, edit, or delete)._
 
 <br>
 
@@ -68,11 +66,10 @@ _The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing el
 
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
-|      React       | _Lorem ipsum dolor sit amet, consectetur._ |
-|   React Router   | _Lorem ipsum dolor sit amet, consectetur._ |
-| React SemanticUI | _Lorem ipsum dolor sit amet, consectetur._ |
-|     Express      | _Lorem ipsum dolor sit amet, consectetur._ |
-|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ |
+|      React       | _The front-end will be programmed using React._ |
+|   React Router Dom  | _React Router will be used to route users between profiles._ |
+|     Express      | _The back-end will be programmed using Express._ |
+|  Express Router  | _Express Router will be used to create API routes to hit with the frontend._ |
 
 <br>
 
@@ -82,29 +79,21 @@ _The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing el
 
 > Use the Wireframes section to display desktop, tablet and mobile views.
 
-![Desktop Landing](url)
+![Desktop Landing](https://i.imgur.com/ORTvEld.jpg)
 
 - Desktop Landing
 
-![Desktop Hero](url)
+![Desktop Login/Register](https://i.imgur.com/6fEHbRX.jpg)
 
-- Desktop Hero
+- Desktop Login/Register
 
-![Resource Index](url)
+![Resource Index](https://i.imgur.com/kJyq9k1.jpg)
 
 - Resource Index
 
-![Resource Show](url)
+![Resource Profile](https://i.imgur.com/UuHXfDd.jpg)
 
-- Resource Show
-
-![Tablet Resource Index](url)
-
-- Tablet Resource Index
-
-![Mobile Resource Index](url)
-
-- Mobile Resource Index
+- Resource Profile
 
 #### Component Hierarchy
 
@@ -113,14 +102,17 @@ _The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing el
 ``` structure
 
 src
-|__ assets/
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
 |__ components/
-      |__ Header.jsx
+      |__ Header.js
+      |__ LandingPage.js
+      |__ Login.js
+      |__ Register.js
+      |__ Goal.js
+      |__ CreateGoal.js
+      |__ UpdateGoal.js
+      |__ Profile.js
 |__ services/
+      |__ apiHelper.js
 
 ```
 
@@ -130,11 +122,14 @@ src
 
 |  Component   |    Type    | state | props | Description                                                      |
 | :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
-|    Header    | functional |   n   |   n   | _The header will contain the navigation and logo._               |
-|  Navigation  | functional |   n   |   n   | _The navigation will provide a link to each of the pages._       |
-|   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
-| Gallery Card | functional |   n   |   y   | _The cards will render the post info via props._                 |
-|    Footer    | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._ |
+|    Header    | functional |   n   |   y   | _Reusable component. Depending on if the user is logged in or not, the header will contain the logo, login/register buttons or logo and profile picture + logout._               |
+|  Landing Page  | functional |   n   |   n   | _The landing page is a static body element that is plugged into App.JS to create a landing page.._       |
+|   Login    |   class    |   y   |   y   | _Login form. We’ll save the username and password to state that way we can send it to the api call._      |
+| Register | class |   y   |   y   | _Register form. Very similar to login form._                 |
+|    CreateGoal    | class |   y   |   y   | _Form that allows user to add a new goal._ |
+|    CreateGoal    | class |   y   |   y   | _Form that allows user to update a goal._ |
+|    Goal    | class |   y   |   y   | _Reusable component. Will render the goal information through api calls. And depending on if user is logged in, we will show completed, edit, delete buttons._ |
+|    Profile    | functional |   n   |   y   | _Reusable component. Will render profile for each user and will render their goals._ |
 
 #### Component Estimates
 
@@ -142,30 +137,38 @@ src
 
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Add Contact Form    |    L     |     3 hrs      |     2 hrs     |    3 hrs    |
-| Create CRUD Actions |    H     |     3 hrs      |     1 hrs     |     TBD     |
-| TOTAL               |          |     6 hrs      |     3 hrs     |     TBD     |
-
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evalute possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
+| Header    |    M     |     1 hrs      |     TBD     |    TBD    |
+| Landing Page |    M    |     3 hrs      |     TBD     |     TBD     |
+| Login    |    H     |     3 hrs      |    TBD     |    TBD    |
+| Register    |    H     |     3 hrs      |     TBD     |    TBD    |
+| CreateGoal    |    M     |     3 hrs      |     TBD     |    TBD    |
+| UpdateGoal    |    M     |     5 hrs      |     TBD     |    TBD    |
+| Goal    |    M     |     4 hrs      |     TBD     |    TBD   |
+| Profile    |    M     |     5 hrs      |     TBD     |   TBD    |
+| TOTAL               |     28 hrs     |    TBD      |     TBD     |     TBD     |
 
 <br>
 
 ### MVP Server (Back End)
 
+
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model.
 
-#### Data Heirarchy
+![ERD Model](https://i.imgur.com/dHPKIUu.jpg)
 
-> Use this section to display the database, table, and attribute heirarchy.
+- ERD Model
+
+
+#### Data Hierarchy
+
+> Use this section to display the database, table, and attribute hierarchy.
 
 ``` structure
 
 database_db
 |__ users/
-|__ resources/
-|__ posts/
+|__ goals/
 
 ```
 
@@ -175,7 +178,15 @@ database_db
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+-_Register Page: Add typewriter css to say “Get...cooking/running/healthy/git/etc/”_
+- _Landing Page: Allow users to associate themselves with “groups” so they can first see the user profiles from their own group at the top of the page and the user profiles of other groups at bottom of page._
+-_Landing Page: Make user profiles appear as a pop-up on click, as opposed to redirecting to a new page._
+-_Landing Page: Add search-bar functionality to search other users_.
+- _User Profile: Add “member since” date to user profile._
+- _Goals Page: when an in-progress goal is completed, push goal to “Done” section. 
+- _Goals Page: Incorporate “created date” of goal in each goal card._
+
+
 
 <br>
 
@@ -198,6 +209,3 @@ database_db
 > Use this section to list of all major issues encountered and their resolution, if you'd like.
 
 ***
-
-
-_For raw template code, I recommend cloning the wiki._
