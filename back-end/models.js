@@ -36,11 +36,11 @@ User.init({
   modelName: 'user'
 })
 
-User.hasMany(Post, { onDelete: 'cascade' });
-Post.belongsTo(User);
+User.hasMany(Goal, { onDelete: 'cascade' });
+Goal.belongsTo(User);
 
 module.exports = {
-  Post,
+  Goal,
   User,
   sequelize
 }
