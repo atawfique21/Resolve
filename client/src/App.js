@@ -4,12 +4,11 @@ import LoginForm from './Components/LoginForm';
 import RegisterForm from './Components/RegisterForm';
 import Header from './Components/header'
 import LandingPage from './Components/LandingPage'
+import { Route, Link } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <LoginForm />
-      <RegisterForm />
       <Header />
       <LandingPage />
     </div>
