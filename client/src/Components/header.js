@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, Link, Redirect } from 'react-router-dom'
-import LoginForm from './LoginForm'
+import { Link, Redirect } from 'react-router-dom'
+
 
 export default class Header extends React.Component {
 
