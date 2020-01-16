@@ -2,6 +2,10 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <h1>Hey</h1>
+    <header>
+      <h1>Resolve</h1>
+      <button>Login</button>
+      <button>Register</button>
+    </header>
   )
 }
