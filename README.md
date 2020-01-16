@@ -218,4 +218,4 @@ database_db
 ![Revati's Drawing](https://i.imgur.com/6lA1Gm0.jpg)
 
 - Abir's Drawing
-![Abir's Drawing](hhttps://i.imgur.com/Y0MhWOg.jpg)
+![Abir's Drawing](https://i.imgur.com/Y0MhWOg.jpg)
