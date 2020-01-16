@@ -209,3 +209,13 @@ database_db
 > Use this section to list of all major issues encountered and their resolution, if you'd like.
 
 ***
+
+
+- Hannah's Drawing
+![Hannah's Drawing](https://i.imgur.com/2TNcQif.jpg)
+
+- Revati's Drawing
+![Revati's Drawing](https://i.imgur.com/6lA1Gm0.jpg)
+
+- Abir's Drawing
+![Abir's Drawing](hhttps://i.imgur.com/Y0MhWOg.jpg)
