@@ -18,6 +18,11 @@ const buildAuthResponse = (user) => {
   };
 };
 
+userRouter.get('/', async (req, res) => {
+  const user = await User.findAll();
+  res.json(user);
+})
+
 userRouter.post('/register', async (req, res, next) => {
   try {
     const password_digest = await hashPassword(req.body.password);
