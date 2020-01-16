@@ -27,6 +27,7 @@ header {
 
 .logo-desc {
   text-align: center;
+  cursor: pointer;
 }
 
 .logo-desc > h1 {
