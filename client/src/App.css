@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #FED0D1;
+  background-color: rgb(236, 163, 165);
 }
 
 header {
@@ -30,7 +30,7 @@ header {
 }
 
 .logo-desc > h1 {
-  background-color: #FED0D1;
+  background-color: rgb(236, 163, 165);
   margin-bottom: 3px;
   letter-spacing: 5px;
 }
@@ -52,4 +52,46 @@ header {
 
 .header-buttons-container > button:hover {
   background-color: rgba(0, 0, 0, 0.35);
+}
+
+.landingpage-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landingpage-content {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landingpage-content > img {
+  margin: 50px;
+}
+
+.landingpage-content > h3 {
+  max-width: 70%;
+  text-align: center;
+  margin-top: -30px;
+  font-weight: 600;
+}
+
+.blue-highlight {
+  background-color: rgba(0, 255, 255, 0.80);
+  padding: 2px;
+}
+
+.landpage-buttons {
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.landpage-buttons > button {
+  font-size: 15px;
+  letter-spacing: 5px;
+  min-width: 150px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: whitesmoke;
 }
