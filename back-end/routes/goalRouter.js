@@ -12,7 +12,7 @@ goalRouter.route('/')
       next(e)
     }
   })
-  .goal(restrict, async (req, res, next) => {
+  .post(restrict, async (req, res, next) => {
     try {
       const goal = await Goal.create({
         ...req.body,
