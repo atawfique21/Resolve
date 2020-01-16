@@ -13,6 +13,8 @@ class Goal extends Sequelize.Model { }
 Goal.init({
   user_id: Sequelize.INTEGER,
   goal: Sequelize.TEXT,
+  motivation: Sequelize.TEXT,
+  plan: Sequelize.TEXT,
   is_complete: Sequelize.BOOLEAN,
   created_date: Sequelize.NOW,
 }, {
@@ -30,7 +32,6 @@ User.init({
   fun_fact: Sequelize.TEXT,
   location: Sequelize.STRING,
   profile_pic_url: Sequelize.TEXT,
-  profile_url: Sequelize.TEXT,
 }, {
   sequelize,
   modelName: 'user'
