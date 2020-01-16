@@ -9,8 +9,24 @@ import { Route, Link } from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      <Header />
-      <LandingPage />
+      <Route exact path="/" render={() => (
+        <div>
+          <Header />
+          <LandingPage />
+        </div>
+      )} />
+      <Route path="/login" render={() => (
+        <div>
+          <Header />
+          <LoginForm />
+        </div>
+      )} />
+      <Route path="/register" render={() => (
+        <div>
+          <Header />
+          <RegisterForm />
+        </div>
+      )} />
     </div>
   );
 }
