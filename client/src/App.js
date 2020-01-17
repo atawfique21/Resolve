@@ -56,28 +56,28 @@ class App extends React.Component {
       <div className="App">
         <Route exact path="/" render={() => (
           <div>
-            <Header />
+            <Header loggedIn={this.state.currentUser} />
             <LandingPage />
           </div>
         )} />
         <Route path="/login" render={() => (
           <div>
-            <Header />
+            <Header loggedIn={this.state.currentUser} />
             <LoginForm handleLogin={this.handleLogin} errorText={this.errorText} />
           </div>
         )} />
         <Route path="/register" render={() => (
           <div>
-            <Header />
+            <Header loggedIn={this.state.currentUser} />
             <RegisterForm handleRegister={this.handleRegister} />
           </div>
         )} />
         <Route path="/feed" render={() => (
           <div>
-           <Header />
+            <Header loggedIn={this.state.currentUser} />
             <Feed />
-         </div>
-       )} />
+          </div>
+        )} />
       </div>
     );
   }
