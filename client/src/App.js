@@ -118,7 +118,7 @@ class App extends React.Component {
         <Route path="/profile" render={() => (
           <div>
             <Header />
-            <Profile />
+            {/* <Profile /> */}
           </div>
         )} />
         <Route exact path="/user/:id" render={(props) => (
@@ -127,6 +127,7 @@ class App extends React.Component {
         )} />
       </div>
     );
+  }
 }
 
 export default withRouter(App);
