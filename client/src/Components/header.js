@@ -7,6 +7,7 @@ export default class Header extends React.Component {
     super(props)
 
     this.state = {
+      loggedIn: this.props.loggedIn,
       redirect_home: false
     }
   }
@@ -26,11 +27,20 @@ export default class Header extends React.Component {
             <h1>Resolve</h1>
             <h5>The social way to resolve goals</h5>
           </div>
-          <div className="header-buttons-container">
-            <Link to="/login">Login</Link>
-            <Link to="/register">Sign Up</Link>
-            <Link to="/feed">Dashboard</Link>
-          </div>
+
+          {this.state.loggedIn ?
+            <div className="header-buttons-container">
+              <Link to="/feed">Feed</Link>
+              <Link to="/profile">Profile</Link>
+              <Link to="/">Logout</Link>
+            </div>
+            :
+            <div className="header-buttons-container">
+              <Link to="/login">Login</Link>
+              <Link to="/register">Sign Up</Link>
+            </div>
+          }
+
         </div>
         {this.state.redirect_home ? <Redirect to="/" /> : null}
       </header >
