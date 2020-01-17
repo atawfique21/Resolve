@@ -4,6 +4,7 @@ import LoginForm from './Components/LoginForm';
 import RegisterForm from './Components/RegisterForm';
 import Header from './Components/header'
 import LandingPage from './Components/LandingPage'
+import Feed from './Components/Feed'
 import { Route } from 'react-router-dom'
 import { loginUser, registerUser } from './Services/apiHelper'
 
@@ -71,6 +72,12 @@ class App extends React.Component {
             <RegisterForm handleRegister={this.handleRegister} />
           </div>
         )} />
+        <Route path="/feed" render={() => (
+          <div>
+           <Header />
+            <Feed />
+         </div>
+       )} />
       </div>
     );
   }

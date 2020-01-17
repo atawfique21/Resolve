@@ -187,3 +187,25 @@ form > h2 {
   background-color: #695ccd80;
 
 }
+
+.feedpage-content {
+  display: flex;
+}
+
+.users {
+  background-color: white;
+  padding: 2vw;
+  margin: 2vw;
+}
+
+.users > h4 {
+ text-align: center;
+}
+
+.users > img {
+  width: 75px;
+  height: 75px;
+  margin: 2vw;
+  object-fit: cover;
+  border-radius: 100px;
+}
