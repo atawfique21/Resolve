@@ -224,3 +224,11 @@ form > h2 {
   object-fit: cover;
   border-radius: 100px;
 }
+
+.error-text {
+  color: black;
+  background-color: salmon;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
