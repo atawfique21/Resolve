@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import LoginForm from './Components/LoginForm';
 import RegisterForm from './Components/RegisterForm';
-import Header from './Components/header'
-import LandingPage from './Components/LandingPage'
-import { Route } from 'react-router-dom'
+import Header from './Components/header';
+import LandingPage from './Components/LandingPage';
+import Profile from './Components/Profile';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -25,6 +26,12 @@ function App() {
         <div>
           <Header />
           <RegisterForm />
+        </div>
+      )} />
+      <Route path="/profile" render={() => (
+        <div>
+          <Header />
+          <Profile />
         </div>
       )} />
     </div>
