@@ -32,7 +32,7 @@ export default class LoginForm extends Component {
               value={this.state.username}
               onChange={this.handleChange}
               autoComplete="off"
-              autoFocus="true"
+              autoFocus={true}
               autoCorrect="off"
               spellCheck="false"
             />
