@@ -32,7 +32,7 @@ export default class Header extends React.Component {
             <div className="header-buttons-container">
               <Link to="/feed">Feed</Link>
               <Link to="/profile">Profile</Link>
-              <Link to="/">Logout</Link>
+              <Link to="/" onClick={this.props.handleLogout}>Logout</Link>
             </div>
             :
             <div className="header-buttons-container">
