@@ -30,13 +30,12 @@ export const verifyUser = async () => {
 }
 
 export const allUsers = async () => {
-  const resp = await api.get('/auth');
-  return resp;
-}
-
-export const allUsers = async () => {
-  const resp = await api.get('/auth');
-  return resp;
+    try {
+    const resp = await api.get('/auth');
+    return resp;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export const oneUser = async () => {
