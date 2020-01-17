@@ -5,8 +5,8 @@ import RegisterForm from './Components/RegisterForm';
 import Header from './Components/header'
 import LandingPage from './Components/LandingPage'
 import Feed from './Components/Feed'
-import { Route } from 'react-router-dom'
-import { loginUser, registerUser } from './Services/apiHelper'
+import { Route, Redirect } from 'react-router-dom'
+import { loginUser, registerUser, verifyUser } from './Services/apiHelper'
 
 class App extends React.Component {
 
@@ -51,30 +51,51 @@ class App extends React.Component {
     }
   }
 
+  handleVerify = async () => {
+    const currentUser = await verifyUser();
+    if (currentUser) {
+      this.setState({
+        currentUser
+      })
+    }
+  }
+
+  handleLogout = () => {
+    this.setState({
+      currentUser: null
+    })
+    localStorage.removeItem('authToken');
+  }
+
+  componentDidMount() {
+    this.handleVerify();
+  }
+
   render() {
     return (
       <div className="App">
+        {this.state.currentUser ? <Redirect to="/feed" /> : null}
         <Route exact path="/" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <LandingPage />
           </div>
         )} />
         <Route path="/login" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <LoginForm handleLogin={this.handleLogin} errorText={this.errorText} />
           </div>
         )} />
         <Route path="/register" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <RegisterForm handleRegister={this.handleRegister} />
           </div>
         )} />
         <Route path="/feed" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <Feed />
           </div>
         )} />
