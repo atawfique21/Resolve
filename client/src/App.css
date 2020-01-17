@@ -190,8 +190,7 @@ form > h2 {
 .profile {
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-start; */
-
+  justify-content: space-evenly;
   padding: 20px;
   background-color: white;
   min-height: 10%;
@@ -206,8 +205,7 @@ form > h2 {
 .profile .names {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-content: flex-end;
+  /* justify-content: flex-end; */
   margin-right: auto 0;
 }
 
@@ -215,7 +213,6 @@ form > h2 {
 max-width: auto;
 max-height: 20px;
 margin-right: auto 0;
-
 }
 
 .profile .location {
