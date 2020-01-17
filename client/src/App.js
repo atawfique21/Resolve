@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import LoginForm from './Components/LoginForm';
 import RegisterForm from './Components/RegisterForm';
-import Header from './Components/header'
-import LandingPage from './Components/LandingPage'
-import Feed from './Components/Feed'
-import { Route } from 'react-router-dom'
+import Header from './Components/header';
+import LandingPage from './Components/LandingPage';
+import Feed from './Components/Feed';
+// import Profile from './Components/Profile';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
           <Header />
           <Feed />
         </div>
+      )} />
+      <Route exact path="/user/:id" render={(props) => (
+        <Header />
+        // <Profile />
       )} />
     </div>
   );
