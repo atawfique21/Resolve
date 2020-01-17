@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  background-color: aqua;
+  background-color: #32EBFF;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.452);
   display: flex;
   justify-content: center;
@@ -101,7 +101,7 @@ header {
 }
 
 .blue-highlight {
-  background-color: rgba(0, 255, 255, 0.80);
+  background-color: #32EBFF;
   padding: 2px;
 }
 
@@ -120,7 +120,7 @@ form {
   display: flex;
   flex-direction: column;
   min-width: 25%;
-  background-color: cyan;
+  background-color: #32EBFF;
   margin-top: 50px;
   padding: 50px;
   border-radius: 10px;
@@ -185,4 +185,41 @@ form > h2 {
 .submit:hover {
   background-color: #695ccd80;
 
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-start; */
+
+  padding: 20px;
+  background-color: white;
+  min-height: 10%;
+}
+
+.profile img{
+  border-radius: 100%;
+  margin-left: auto 0;
+  justify-content: flex-start;
+}
+
+.profile .names {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: flex-end;
+  margin-right: auto 0;
+}
+
+.profile .pinpoint {
+max-width: auto;
+max-height: 20px;
+margin-right: auto 0;
+
+}
+
+.profile .location {
+  display: flex;
+  flex-direction: row;
+  margin-right: auto 0;
 }
