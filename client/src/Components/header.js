@@ -28,7 +28,7 @@ export default class Header extends React.Component {
           </div>
           <div className="header-buttons-container">
             <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/register">Sign Up</Link>
           </div>
         </div>
         {this.state.redirect_home ? <Redirect to="/" /> : null}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 
 export default class RegisterForm extends Component {
@@ -104,8 +105,11 @@ export default class RegisterForm extends Component {
               onChange={this.handleChange}
             />
           </span>
-          <input type="submit" className="submit" />
+          <input type="submit" className="submit" value="Register" />
         </form>
+        <div className="header-buttons-container redirect">
+          <Link to="/login">Already Resolving?</Link>
+        </div>
       </div>
     )
   }

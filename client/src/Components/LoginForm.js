@@ -46,9 +46,11 @@ export default class LoginForm extends Component {
               onChange={this.handleChange}
             />
           </span>
-          <input type="submit" className="submit" />
-          {/* <Link to = "/register">Register</Link>               */}
+          <input type="submit" className="submit" value="Login" />
         </form>
+        <div className="header-buttons-container redirect">
+          <Link to="/register">New to Resolve?</Link>
+        </div>
       </div>
     )
   }
