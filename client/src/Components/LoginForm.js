@@ -8,7 +8,6 @@ export default class LoginForm extends Component {
     this.state = {
       username: '',
       password: '',
-      errorText: this.props.errorText
     }
   }
 
@@ -25,6 +24,7 @@ export default class LoginForm extends Component {
       <div className="auth">
         <form onSubmit={(e) => this.props.handleLogin(e, { username: this.state.username, password: this.state.password })}>
           <h2>Continue Resolving</h2>
+          {this.props.errorText && <p className="error-text">{this.props.errorText}</p>}
           <span className="field">
             <label htmlFor="username">Username</label>
             <input
