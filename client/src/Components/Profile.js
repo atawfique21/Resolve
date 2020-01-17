@@ -42,6 +42,8 @@ class Profile extends Component {
                 <img className="pinpoint" src={this.state.pinpoint} alt="map"></img>
                 <h4>{this.state.location}</h4>
                 </div>
+
+
             </div>
         )
     }
