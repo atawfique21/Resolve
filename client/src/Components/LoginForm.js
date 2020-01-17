@@ -7,7 +7,8 @@ export default class LoginForm extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errorText: this.props.errorText
     }
   }
 
@@ -32,7 +33,7 @@ export default class LoginForm extends Component {
               value={this.state.username}
               onChange={this.handleChange}
               autoComplete="off"
-              autoFocus="true"
+              autoFocus={true}
               autoCorrect="off"
               spellCheck="false"
             />

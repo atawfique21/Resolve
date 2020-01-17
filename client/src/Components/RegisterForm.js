@@ -27,16 +27,15 @@ export default class RegisterForm extends Component {
   render() {
     return (
       <div className="auth">
-        <form onSubmit={(e) => this.props.handleRegister
-          (e, {
-            username: this.state.username,
-            password: this.state.password,
-            fun_fact: this.state.fun_fact,
-            location: this.state.location,
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            profile_pic_url: this.state.profile_pic_url
-          })}>
+        <form onSubmit={(e) => this.props.handleRegister(e, {
+          username: this.state.username,
+          password: this.state.password,
+          fun_fact: this.state.fun_fact,
+          location: this.state.location,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          profile_pic_url: this.state.profile_pic_url
+        })}>
           <h2>Start Resolving</h2>
           <span className="field">
             <label htmlFor="username">Username</label>
@@ -46,7 +45,7 @@ export default class RegisterForm extends Component {
               value={this.state.username}
               onChange={this.handleChange}
               autoComplete="off"
-              autoFocus="true"
+              autoFocus={true}
               autoCorrect="off"
               spellCheck="false"
             />
