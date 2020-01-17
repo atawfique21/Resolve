@@ -14,7 +14,7 @@ const buildAuthResponse = (user) => {
 
   return {
     user: userData,
-    token,
+    token
   };
 };
 
@@ -23,14 +23,30 @@ userRouter.get('/', async (req, res) => {
   res.json(user);
 })
 
+userRouter.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    res.json(user);
+  } catch (e) {
+    console.error(e);
+    res.json({ err: e.message })
+  }
+})
+
 userRouter.post('/register', async (req, res, next) => {
   try {
     const password_digest = await hashPassword(req.body.password);
-    const { username } = req.body;
+    const { username, fun_fact, location, first_name, last_name, profile_pic_url } = req.body;
+    console.log(req.body)
 
     const user = await User.create({
       username,
       password_digest,
+      fun_fact,
+      location,
+      first_name,
+      last_name,
+      profile_pic_url
     });
 
     const respData = buildAuthResponse(user);
@@ -57,6 +73,7 @@ userRouter.post('/login', async (req, res) => {
       res.status(401).send('Invalid Credentials');
     }
   } catch (e) {
+    console.log(e)
     res.status(401).send('Invalid Credentials');
   }
 });
