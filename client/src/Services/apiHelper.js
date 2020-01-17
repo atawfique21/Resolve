@@ -33,3 +33,13 @@ export const allUsers = async () => {
   const resp = await api.get('/auth');
   return resp;
 }
+
+export const allUsers = async () => {
+  const resp = await api.get('/auth');
+  return resp;
+}
+
+export const oneUser = async () => {
+  const resp = await api.get('/auth/:id');
+  return resp;
+}
