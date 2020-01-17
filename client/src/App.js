@@ -5,7 +5,7 @@ import RegisterForm from './Components/RegisterForm';
 import Header from './Components/header'
 import LandingPage from './Components/LandingPage'
 import Feed from './Components/Feed'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { loginUser, registerUser, verifyUser } from './Services/apiHelper'
 
 class App extends React.Component {
@@ -26,12 +26,27 @@ class App extends React.Component {
         errorText: "Please enter Username & Password!"
       })
     } else {
-      const currentUser = await loginUser(loginData);
-      this.setState({ currentUser })
-      console.log(currentUser)
-      this.setState({
-        errorText: ''
-      })
+      try {
+        const currentUser = await loginUser(loginData);
+        this.setState({ currentUser })
+        console.log(currentUser)
+        this.setState({
+          errorText: ''
+        })
+        this.props.history.push('/feed');
+      } catch (e) {
+        console.log(e.message)
+        if (e.message === "Request failed with status code 401") {
+          e.message = "Wrong username or password"
+          this.setState({
+            errorText: e.message
+          })
+        } else {
+          this.setState({
+            errorText: e.message
+          })
+        }
+      }
     }
   }
 
@@ -65,6 +80,7 @@ class App extends React.Component {
       currentUser: null
     })
     localStorage.removeItem('authToken');
+    this.props.history.push('/');
   }
 
   componentDidMount() {
@@ -74,7 +90,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.currentUser ? <Redirect to="/feed" /> : null}
         <Route exact path="/" render={() => (
           <div>
             <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
@@ -84,7 +99,7 @@ class App extends React.Component {
         <Route path="/login" render={() => (
           <div>
             <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
-            <LoginForm handleLogin={this.handleLogin} errorText={this.errorText} />
+            <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} />
           </div>
         )} />
         <Route path="/register" render={() => (
@@ -104,4 +119,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
