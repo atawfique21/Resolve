@@ -7,6 +7,7 @@ import LandingPage from './Components/LandingPage'
 import Feed from './Components/Feed'
 import { Route, withRouter } from 'react-router-dom'
 import { loginUser, registerUser, verifyUser } from './Services/apiHelper'
+// import Profile from './Components/Profile';
 
 class App extends React.Component {
 
@@ -113,6 +114,10 @@ class App extends React.Component {
             <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <Feed />
           </div>
+        )} />
+        <Route exact path="/user/:id" render={(props) => (
+          <Header />
+          // <Profile />
         )} />
       </div>
     );

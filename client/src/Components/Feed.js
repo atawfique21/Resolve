@@ -23,17 +23,23 @@ class Feed extends Component {
   }
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+    }
+
     return (
       <div className="feedpage-wrapper">
         <div className="feedpage-content">
           {this.state.users.map(user => (
-            <div key={user.id} className="users">
-              <h4>{user.first_name}</h4>
-              <img src={user.profile_pic_url} alt="user" />
-            </div>
+            <Link style={linkStyle} to={`/profile/${user.id}`}>
+              <div key={user.id} className="users">
+                <h4>{user.first_name}</h4>
+                <img src={user.profile_pic_url} alt="user" />
+              </div>
+            </Link>
           ))}
         </div>
-      </div>
+      </div >
     )
   }
 }

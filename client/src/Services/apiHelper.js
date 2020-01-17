@@ -30,10 +30,15 @@ export const verifyUser = async () => {
 }
 
 export const allUsers = async () => {
-  try {
+    try {
     const resp = await api.get('/auth');
     return resp;
   } catch (e) {
     console.log(e);
   }
+}
+
+export const oneUser = async () => {
+  const resp = await api.get('/auth/:id');
+  return resp;
 }
