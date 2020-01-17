@@ -199,6 +199,8 @@ form > h2 {
 
 .users > h4 {
  text-align: center;
+ text-decoration: none;
+ color: black;
 }
 
 .users > img {
