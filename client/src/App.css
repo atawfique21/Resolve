@@ -6,20 +6,21 @@
 }
 
 body {
-  background: rgb(236,136,180);
-  background: radial-gradient(circle, rgba(236,136,180,1) 0%, rgba(193,211,232,1) 125%);
+  /* background: rgb(236,136,180);
+  background: radial-gradient(circle, rgba(236,136,180,1) 0%, rgba(193,211,232,1) 125%); */
+  background: black;
   min-height: 100vh;
 }
 
 header {
-  background-color: aqua;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.452);
+  background-color: rgba(0, 0, 0, 0.219);
+  /* box-shadow: 0 1px 6px rgba(0, 0, 0, 0.452); */
   display: flex;
   justify-content: center;
 }
 
 .header-container {
-  min-width: 60%;
+  min-width: 95%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,49 +31,60 @@ header {
 .logo-desc {
   text-align: center;
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.20s ease-in-out;
 }
 
 .logo-desc:hover{
   opacity: 90%;
+  transform: scale(1.02);
 }
 
 
 .logo-desc > h1 {
-  background-color: rgb(236, 163, 165);
+  /* background-color: rgb(236, 163, 165); */
+  background-color: #695ccd;
+  color: whitesmoke;
   margin-bottom: 3px;
-  letter-spacing: 5px;
+  letter-spacing: 1.5vw;
+  font-size: 55px;
+  padding-left: 20px;
+  padding-right: -10px;
+}
+
+.logo-desc > h5 {
+  color: whitesmoke;
 }
 
 .redirect {
   margin-top: 10px;
   margin-bottom: 10px;
+  background-color: #695ccd;
 }
 
 .header-buttons-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .header-buttons-container > a {
-  font-size: 16px;
+  font-size: 18px;
   margin: 5px;
+  margin-right: 10px;
   border: hidden;
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: #ffffff;
+  color: whitesmoke;
   font-weight: 400;
-  background-color: #695ccd;
+  /* background-color: #695ccd; */
   text-align: center;
-  transition: all 0.35s ease-in-out;
-  border-radius: 5px;
-  min-width: 100%;
+  transition: all 0.25s ease-in-out;
+  max-width: fit-content;
   padding: 6px;
 }
 
 .header-buttons-container > a:hover {
-  background-color: #695ccd79;
+  background-color: #695ccd;
   color: #f9f9fa;
 }
 
@@ -98,11 +110,13 @@ header {
   text-align: center;
   margin-top: -30px;
   font-weight: 600;
+  color: whitesmoke;
+  margin-bottom: 50px;
 }
 
 .blue-highlight {
-  background-color: rgba(0, 255, 255, 0.80);
-  padding: 2px;
+  background-color: #695ccd;
+  padding: 1px;
 }
 
 .landpage-buttons {
@@ -120,7 +134,7 @@ form {
   display: flex;
   flex-direction: column;
   min-width: 25%;
-  background-color: cyan;
+  background-color: rgb(238, 229, 229);
   margin-top: 50px;
   padding: 50px;
   border-radius: 10px;
@@ -180,9 +194,77 @@ form > h2 {
   outline: none;
   transition: all 0.35s ease-in-out;
   margin-bottom: -20px;
+  cursor: pointer;
 }
 
 .submit:hover {
   background-color: #695ccd80;
 
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px;
+  background-color: white;
+  min-height: 10%;
+}
+
+.profile img{
+  border-radius: 100%;
+  margin-left: auto 0;
+  justify-content: flex-start;
+}
+
+.profile .names {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  margin-right: auto 0;
+}
+
+.profile .pinpoint {
+max-width: auto;
+max-height: 20px;
+margin-right: auto 0;
+}
+
+.profile .location {
+  display: flex;
+  flex-direction: row;
+  margin-right: auto 0;
+}
+
+.feedpage-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.users {
+  background-color: white;
+  padding: 2vw;
+  margin: 2vw;
+}
+
+.users > h4 {
+ text-align: center;
+ text-decoration: none;
+ color: black;
+}
+
+.users > img {
+  width: 75px;
+  height: 75px;
+  margin: 2vw;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.error-text {
+  color: black;
+  background-color: salmon;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
 }
