@@ -12,22 +12,27 @@ class Feed extends Component {
   }
 
   async componentDidMount() {
-    // try {
-    const response = await axios(`http://localhost:3001/auth`);
-    console.log(response)
-    //   this.setState({
-    //     users: response.data
-    //   })
-    // } catch (e) {
-    //   console.error(e)
-    // }
+    try {
+      const response = await axios(`http://localhost:3001/auth`);
+      console.log(response.data)
+      this.setState({
+        users: response.data
+      })
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   render() {
     return (
-      <div className="feed-wrapper">
-        <div className="feed-content">
-
+      <div className="feedpage-wrapper">
+        <div className="feedpage-content">
+          {this.state.users.map(user => (
+            <div key={user.id} className="users">
+              <h4>{user.first_name}</h4>
+              <img src={user.profile_pic_url} alt="user" />
+            </div>
+          ))}
         </div>
       </div>
     )

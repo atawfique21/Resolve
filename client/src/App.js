@@ -4,6 +4,7 @@ import LoginForm from './Components/LoginForm';
 import RegisterForm from './Components/RegisterForm';
 import Header from './Components/header'
 import LandingPage from './Components/LandingPage'
+import Feed from './Components/Feed'
 import { Route } from 'react-router-dom'
 
 function App() {
@@ -25,6 +26,12 @@ function App() {
         <div>
           <Header />
           <RegisterForm />
+        </div>
+      )} />
+      <Route path="/feed" render={() => (
+        <div>
+          <Header />
+          <Feed />
         </div>
       )} />
     </div>
