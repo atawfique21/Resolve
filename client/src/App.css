@@ -202,6 +202,40 @@ form > h2 {
 
 }
 
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px;
+  background-color: white;
+  min-height: 10%;
+}
+
+.profile img{
+  border-radius: 100%;
+  margin-left: auto 0;
+  justify-content: flex-start;
+}
+
+.profile .names {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  margin-right: auto 0;
+}
+
+.profile .pinpoint {
+max-width: auto;
+max-height: 20px;
+margin-right: auto 0;
+}
+
+.profile .location {
+  display: flex;
+  flex-direction: row;
+  margin-right: auto 0;
+}
+
 .feedpage-content {
   display: flex;
   flex-wrap: wrap;

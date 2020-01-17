@@ -115,13 +115,18 @@ class App extends React.Component {
             <Feed />
           </div>
         )} />
+        <Route path="/profile" render={() => (
+          <div>
+            <Header />
+            <Profile />
+          </div>
+        )} />
         <Route exact path="/user/:id" render={(props) => (
           <Header />
           // <Profile />
         )} />
       </div>
     );
-  }
 }
 
 export default withRouter(App);
