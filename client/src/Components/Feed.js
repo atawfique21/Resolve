@@ -14,7 +14,6 @@ class Feed extends Component {
   async componentDidMount() {
     try {
       const response = await axios(`http://localhost:3001/auth`);
-      console.log(response.data)
       this.setState({
         users: response.data
       })
