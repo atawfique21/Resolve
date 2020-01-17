@@ -14,7 +14,7 @@ const buildAuthResponse = (user) => {
 
   return {
     user: userData,
-    token,
+    token
   };
 };
 
@@ -57,6 +57,7 @@ userRouter.post('/login', async (req, res) => {
       res.status(401).send('Invalid Credentials');
     }
   } catch (e) {
+    console.log(e)
     res.status(401).send('Invalid Credentials');
   }
 });
