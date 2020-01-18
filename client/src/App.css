@@ -239,6 +239,12 @@ margin-right: auto;
   margin-right: auto 0;
 }
 
+.profile .single-goal {
+  background-color: rgb(255, 221, 185);
+  padding: 1vw;
+  margin: 1vw;
+}
+
 .feedpage-content {
   display: flex;
   flex-wrap: wrap;
