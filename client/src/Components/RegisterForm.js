@@ -24,18 +24,18 @@ export default class RegisterForm extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    if (!this.state.profile_pic_url) {
+      this.props.handleRegister(e, { username: this.state.username, password: this.state.password, fun_fact: this.state.fun_fact, location: this.state.location, first_name: this.state.first_name, last_name: this.state.last_name, profile_pic_url: "http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png" })
+    } else {
+      this.props.handleRegister(e, { username: this.state.username, password: this.state.password, fun_fact: this.state.fun_fact, location: this.state.location, first_name: this.state.first_name, last_name: this.state.last_name, profile_pic_url: this.state.profile_pic_url })
+    }
+  }
+
   render() {
     return (
       <div className="auth">
-        <form onSubmit={(e) => this.props.handleRegister(e, {
-          username: this.state.username,
-          password: this.state.password,
-          fun_fact: this.state.fun_fact,
-          location: this.state.location,
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
-          profile_pic_url: this.state.profile_pic_url
-        })}>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <h2>Start Resolving</h2>
           <span className="field">
             <label htmlFor="username">Username</label>
