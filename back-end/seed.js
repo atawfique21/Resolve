@@ -42,7 +42,7 @@ const seed = async () => {
     plan: "Meal prep on Sundays.",
     is_complete: false,
   })
-
+A
   const goal2 = await Goal.create({
     user_id: 3,
     name: "Workout",
