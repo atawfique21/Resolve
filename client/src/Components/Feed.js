@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Popup from 'reactjs-popup'
 
 class Feed extends Component {
   constructor(props) {
