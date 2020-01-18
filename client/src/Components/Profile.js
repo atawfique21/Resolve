@@ -6,7 +6,6 @@ export default function Profile(props) {
   })
 
   const goals = props.goals.filter(goal => {
-    console.log(goal)
     return goal.user_id === parseInt(props.userId)
   })
 
@@ -27,15 +26,19 @@ export default function Profile(props) {
           </section>
           <section className="goals">
             <h3>Goals</h3>
-            {goals.map(goal => (
-              <div className="single-goal" key={goal.id}>
-                <h4>{goal.name}</h4>
-                <h5>Motivation</h5>
-                <p>>{goal.motivation}</p>
-                <h5>Plan</h5>
-                <p>>{goal.plan}</p>
-              </div>
-            ))}
+            {goals.length > 0 ?
+              goals.map(goal => (
+                <div className="single-goal" key={goal.id}>
+                  <h4>{goal.name}</h4>
+                  <h5>Motivation</h5>
+                  <p>>{goal.motivation}</p>
+                  <h5>Plan</h5>
+                  <p>>{goal.plan}</p>
+                </div>
+              )) :
+              <h3>This profile does not have any goals.</h3>
+            }
+
           </section>
         </div >
       )}
