@@ -41,3 +41,8 @@ export const oneUser = async () => {
   const resp = await api.get('/auth/:id');
   return resp;
 }
+
+export const createGoal = async (goalData) => {
+  const resp = await api.post('/goals', goalData)
+  return resp.data.goal;
+}

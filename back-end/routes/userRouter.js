@@ -37,7 +37,6 @@ userRouter.post('/register', async (req, res, next) => {
   try {
     const password_digest = await hashPassword(req.body.password);
     const { username, fun_fact, location, first_name, last_name, profile_pic_url } = req.body;
-    console.log(req.body)
 
     const user = await User.create({
       username,

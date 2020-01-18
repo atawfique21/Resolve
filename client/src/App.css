@@ -117,6 +117,11 @@ header {
 .blue-highlight {
   background-color: #695ccd;
   padding: 1px;
+  font-weight: 600;
+}
+
+.white {
+  color: whitesmoke;
 }
 
 .landpage-buttons {
@@ -202,6 +207,15 @@ form > h2 {
 
 }
 
+.cancel {
+  background-color: salmon;
+  margin-top: 25px;
+}
+
+.cancel:hover {
+  background-color: rgb(255, 48, 25);
+}
+
 .profile {
   display: flex;
   flex-direction: row;
@@ -277,3 +291,63 @@ margin-right: auto;
   margin-bottom: 15px;
   text-align: center;
 }
+
+
+/* POP UP FORM CSS */
+.popup-content {
+  max-width: 30%;
+}
+
+.modal {
+  font-size: 15px;
+}
+
+.modal > form {
+  background-color: white;
+  margin-top: 0px;
+}
+.modal > .header {
+  width: 99%;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -8px;
+  font-size: 24px;
+  background: salmon;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  transition: all 0.35s ease-in-out;
+}
+
+.close > h5 {
+  position: relative;
+  margin-right: -2.3px;
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+.close:hover {
+  background-color: rgb(255, 48, 25);
+}
+/* POP UP FORM CSS */
