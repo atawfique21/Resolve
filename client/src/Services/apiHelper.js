@@ -30,7 +30,7 @@ export const verifyUser = async () => {
 }
 
 export const allUsers = async () => {
-    try {
+  try {
     const resp = await api.get('/auth');
     return resp;
   } catch (e) {
@@ -41,4 +41,9 @@ export const allUsers = async () => {
 export const oneUser = async () => {
   const resp = await api.get('/auth/:id');
   return resp;
+}
+
+export const createGoal = async (goalData) => {
+  const resp = await api.post('/goals', goalData)
+  return resp.data.goal;
 }

@@ -35,6 +35,28 @@ const seed = async () => {
 
   await Goal.destroy({ where: {} })
 
+  const goal1 = await Goal.create({
+    user_id: 3,
+    name: "Cook More",
+    motivation: "Save money",
+    plan: "Meal prep on Sundays.",
+    is_complete: false,
+  })
+  const goal2 = await Goal.create({
+    user_id: 3,
+    name: "Workout",
+    motivation: "Get healthier.",
+    plan: "Sign up for gym membership and go to gym.",
+    is_complete: false,
+  })
+  const goal3 = await Goal.create({
+    user_id: 2,
+    name: "Read",
+    motivation: "I want to read more.",
+    plan: "Sign up for library card and borrow books.",
+    is_complete: false,
+  })
+
   process.exit();
 }
 

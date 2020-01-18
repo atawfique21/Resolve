@@ -12,11 +12,12 @@ goalRouter.route('/')
       next(e)
     }
   })
-  .post(restrict, async (req, res, next) => {
+  .post(async (req, res, next) => {
     try {
       const goal = await Goal.create({
         ...req.body,
-        userId: res.locals.user.id
+        is_complete: false,
+        // userId: res.locals.user.id
       });
       res.json(goal);
     } catch (e) {
