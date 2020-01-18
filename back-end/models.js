@@ -12,7 +12,7 @@ class Goal extends Sequelize.Model { }
 
 Goal.init({
   user_id: Sequelize.INTEGER,
-  goal: Sequelize.TEXT,
+  name: Sequelize.TEXT,
   motivation: Sequelize.TEXT,
   plan: Sequelize.TEXT,
   is_complete: Sequelize.BOOLEAN,
