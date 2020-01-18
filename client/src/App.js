@@ -18,6 +18,7 @@ class App extends React.Component {
     this.state = {
       currentUser: null,
       users: [],
+      goals: [],
       pinpoint: 'https://image.flaticon.com/icons/png/512/67/67347.png',
       apiDataLoaded: false,
       errorText: ""
@@ -92,9 +93,11 @@ class App extends React.Component {
   componentDidMount = async () => {
     this.handleVerify();
     try {
-      const response = await axios(`http://localhost:3001/auth`);
+      const userResponse = await axios(`http://localhost:3001/auth`);
+      const goalResponse = await axios(`http://localhost:3001/goals`);
       this.setState({
-        users: response.data,
+        users: userResponse.data,
+        goals: goalResponse.data,
         apiDataLoaded: true
       })
     } catch (e) {
@@ -134,6 +137,7 @@ class App extends React.Component {
             <Header />
             <Profile
               users={this.state.users}
+              goals={this.state.goals}
               pinpoint={this.state.pinpoint}
               userId={props.match.params.id}
             />
