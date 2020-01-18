@@ -16,7 +16,6 @@ Goal.init({
   motivation: Sequelize.TEXT,
   plan: Sequelize.TEXT,
   is_complete: Sequelize.BOOLEAN,
-  created_date: Sequelize.NOW,
 }, {
   sequelize,
   modelName: 'goal'
