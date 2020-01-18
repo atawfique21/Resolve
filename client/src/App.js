@@ -124,11 +124,8 @@ class App extends React.Component {
         )} />
         <Route path="/feed" render={(props) => (
           <div>
-            <Header
-              loggedIn={this.state.currentUser}
-              handleLogout={this.handleLogout}
-              users={this.state.users} />
-            <Feed />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+            <Feed users={this.state.users} />
           </div>
         )} />
         <Route exact path="/profile/:id" render={(props) => (
