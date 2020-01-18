@@ -1,4 +1,3 @@
-import React from 'react';
 import Axios from 'axios';
 
 const api = Axios.create({
@@ -30,7 +29,7 @@ export const verifyUser = async () => {
 }
 
 export const allUsers = async () => {
-    try {
+  try {
     const resp = await api.get('/auth');
     return resp;
   } catch (e) {
