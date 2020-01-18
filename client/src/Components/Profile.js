@@ -1,52 +1,47 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-class Profile extends Component {
-    constructor(props) {
-        super(props);
+export default function Profile(props) {
+  const user = props.users.find(user => {
+    return user.id === parseInt(props.userId)
+  })
 
-        this.state = {
-            first_name: 'Hannah',
-            last_name: 'Reilly',
-            profile_pic_url: 'https://media-exp1.licdn.com/dms/image/C4D03AQGmzrAJOFCUBA/profile-displayphoto-shrink_200_200/0?e=1584576000&v=beta&t=Jdi_jghFaIqdNWivMFf6zFDLrpicS77YnD2d9E2Dqgk',
-            fun_fact: 'My name is a palidrone',
-            location:'NYC',
-            pinpoint:'https://image.flaticon.com/icons/png/512/67/67347.png',
-            apiDataLoaded: false
-        }
-    };
+  const goals = props.goals.filter(goal => {
+    return goal.user_id === parseInt(props.userId)
+  })
 
-    async componentDidMount() {
-        try {
-            const response = await axios("http://localhost:3001/profiles")
-            this.setState({
-                profile: response.data,
-                apiDataLoaded: true
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    }
+  return (
+    <div>
+      {user && (
+        <div className="profile">
+          <img src={user.profile_pic_url} alt="profile" class="profile-image"></img>
 
-    render() {
-        return (
-            <div className="profile">
-                <img src={this.state.profile_pic_url} alt="profile"></img>
-                
-                <div className="names">
-                <h1>{this.state.first_name} {this.state.last_name}</h1>
-                <h3>{this.state.fun_fact}</h3>
+          <section className="names">
+            <h1>{user.first_name} {user.last_name}</h1>
+            <h3>{user.fun_fact}</h3>
+          </section>
+
+          <section className="location">
+            <img className="pinpoint" src={props.pinpoint} alt="map"></img>
+            <h4>{user.location}</h4>
+          </section>
+          <section className="goals">
+            <h3>Goals</h3>
+            {goals.length > 0 ?
+              goals.map(goal => (
+                <div className="single-goal" key={goal.id}>
+                  <h4>{goal.name}</h4>
+                  <h5>Motivation</h5>
+                  <p>>{goal.motivation}</p>
+                  <h5>Plan</h5>
+                  <p>>{goal.plan}</p>
                 </div>
+              )) :
+              <h3>This profile does not have any goals.</h3>
+            }
 
-                <div className="location">
-                <img className="pinpoint" src={this.state.pinpoint} alt="map"></img>
-                <h4>{this.state.location}</h4>
-                </div>
-
-
-            </div>
-        )
-    }
+          </section>
+        </div >
+      )}
+    </div>
+  )
 }
-
-export default Profile;
