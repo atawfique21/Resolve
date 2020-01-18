@@ -26,7 +26,7 @@ export default function Profile(props) {
             <h4>{user.location}</h4>
           </section>
           <section className="goals">
-            <h4>Goals</h4>
+            <h3>Goals</h3>
             {goals.map(goal => (
               <div className="single-goal" key={goal.id}>
                 <h4>{goal.name}</h4>
