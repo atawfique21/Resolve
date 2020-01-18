@@ -18,6 +18,7 @@ class App extends React.Component {
     this.state = {
       currentUser: null,
       users: [],
+      pinpoint: 'https://image.flaticon.com/icons/png/512/67/67347.png',
       apiDataLoaded: false,
       errorText: ""
     }
@@ -133,6 +134,7 @@ class App extends React.Component {
             <Header />
             <Profile
               users={this.state.users}
+              pinpoint={this.state.pinpoint}
               userId={props.match.params.id}
             />
           </div>
