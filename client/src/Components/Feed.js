@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Popup from 'reactjs-popup'
+import AddGoal from './AddGoal'
+
 
 class Feed extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Feed extends Component {
 
     return (
       <div className="feedpage-wrapper">
+        <AddGoal />
         <div className="feedpage-content">
           {this.state.users.map(user => (
             <Link style={linkStyle} to={`/profile/${user.id}`}>
