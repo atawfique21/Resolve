@@ -225,7 +225,10 @@ form > h2 {
   min-height: 10%;
 }
 
-.profile img{
+.profile .profile-image{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
   border-radius: 100%;
   margin-left: auto 0;
   justify-content: flex-start;
@@ -241,13 +244,19 @@ form > h2 {
 .profile .pinpoint {
 max-width: auto;
 max-height: 20px;
-margin-right: auto 0;
+margin-right: auto;
 }
 
 .profile .location {
   display: flex;
   flex-direction: row;
   margin-right: auto 0;
+}
+
+.profile .single-goal {
+  background-color: rgb(255, 221, 185);
+  padding: 1vw;
+  margin: 1vw;
 }
 
 .feedpage-content {

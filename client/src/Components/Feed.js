@@ -4,24 +4,12 @@ import axios from 'axios';
 import AddGoal from './AddGoal'
 import { createGoal } from '../Services/apiHelper'
 
-
 class Feed extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       users: []
-    }
-  }
-
-  async componentDidMount() {
-    try {
-      const response = await axios(`http://localhost:3001/auth`);
-      this.setState({
-        users: response.data
-      })
-    } catch (e) {
-      console.error(e)
     }
   }
 
@@ -40,7 +28,7 @@ class Feed extends Component {
       <div className="feedpage-wrapper">
         <AddGoal handleAdd={this.handleAdd} />
         <div className="feedpage-content">
-          {this.state.users.map(user => (
+          {this.props.users.map(user => (
             <Link style={linkStyle} to={`/profile/${user.id}`}>
               <div key={user.id} className="users">
                 <h4>{user.first_name}</h4>
