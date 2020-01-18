@@ -5,9 +5,10 @@ import RegisterForm from './Components/RegisterForm';
 import Header from './Components/header'
 import LandingPage from './Components/LandingPage'
 import Feed from './Components/Feed'
+import axios from 'axios'
 import { Route, withRouter } from 'react-router-dom'
 import { loginUser, registerUser, verifyUser } from './Services/apiHelper'
-// import Profile from './Components/Profile';
+import Profile from './Components/Profile';
 
 class App extends React.Component {
 
@@ -16,12 +17,15 @@ class App extends React.Component {
 
     this.state = {
       currentUser: null,
+      users: [],
+      apiDataLoaded: false,
       errorText: ""
     }
   }
 
   handleLogin = async (e, loginData) => {
     e.preventDefault();
+
     if (!loginData.username || !loginData.password) {
       this.setState({
         errorText: "Please enter Username & Password!"
@@ -84,8 +88,17 @@ class App extends React.Component {
     this.props.history.push('/');
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     this.handleVerify();
+    try {
+      const response = await axios(`http://localhost:3001/auth`);
+      this.setState({
+        users: response.data,
+        apiDataLoaded: true
+      })
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   render() {
@@ -109,21 +122,23 @@ class App extends React.Component {
             <RegisterForm handleRegister={this.handleRegister} />
           </div>
         )} />
-        <Route path="/feed" render={() => (
+        <Route path="/feed" render={(props) => (
           <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+            <Header
+              loggedIn={this.state.currentUser}
+              handleLogout={this.handleLogout}
+              users={this.state.users} />
             <Feed />
           </div>
         )} />
-        <Route path="/profile" render={() => (
+        <Route exact path="/profile/:id" render={(props) => (
           <div>
             <Header />
-            {/* <Profile /> */}
+            <Profile
+              users={this.state.users}
+              userId={props.match.params.id}
+            />
           </div>
-        )} />
-        <Route exact path="/user/:id" render={(props) => (
-          <Header />
-          // <Profile />
         )} />
       </div>
     );
