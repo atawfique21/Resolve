@@ -28,14 +28,15 @@ class Feed extends Component {
       <div className="feedpage-wrapper">
         <AddGoal handleAdd={this.handleAdd} />
         <div className="feedpage-content">
-          {this.props.users.map(user => (
-            <Link style={linkStyle} to={`/profile/${user.id}`}>
-              <div key={user.id} className="users">
-                <h4>{user.first_name}</h4>
-                <img src={user.profile_pic_url} alt="user" />
-              </div>
-            </Link>
-          ))}
+          {this.props.apiDataLoaded &&
+            this.props.users.map(user => (
+              <Link style={linkStyle} to={`/profile/${user.id}`}>
+                <div key={user.id} className="users">
+                  <h4>{user.first_name}</h4>
+                  <img src={user.profile_pic_url} alt="user" />
+                </div>
+              </Link>
+            ))}
         </div>
       </div >
     )
