@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
+import Typewriter from 'typewriter-effect'
 
 export default class RegisterForm extends Component {
   constructor(props) {
