@@ -9,6 +9,23 @@ export default function Profile(props) {
     return goal.user_id === parseInt(props.userId)
   })
 
+
+delete = async (e, goalToDelete) => {
+    e.preventDefault();
+    try {
+        await axios.delete(`http://localhost:3000/profile/${goalToDelete}`);
+        const goals = this.state.goals.filter(goal => (
+            goal.id !==  goalToDelete
+    ))
+    this.setState({
+        goals
+    })
+} catch (e) {
+    console.error(e);
+}
+}
+
+
   return (
     <div>
       {user && (
@@ -34,6 +51,7 @@ export default function Profile(props) {
                   <p>>{goal.motivation}</p>
                   <h5>Plan</h5>
                   <p>>{goal.plan}</p>
+                  <button onClick = {(e) => this.delete(e, goal.id)}>Delete</button>
                 </div>
               )) :
               <h3>This profile does not have any goals.</h3>
