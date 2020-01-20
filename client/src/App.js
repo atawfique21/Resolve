@@ -70,6 +70,7 @@ class App extends React.Component {
         errorText: ''
       })
       console.log(currentUser)
+      this.props.history.push('/login');
     }
   }
 
