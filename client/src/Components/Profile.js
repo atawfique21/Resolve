@@ -51,27 +51,27 @@ export default class Profile2 extends Component {
   render() {
     return (
       <div>
-        {user && (
+        {this.state.user && (
           <div>
             <div className="profile">
-              <img src={user.profile_pic_url} alt="profile" className="profile-image"></img>
+              <img src={this.state.user.profile_pic_url} alt="profile" className="profile-image"></img>
 
               <section className="names">
-                <h1>{user.first_name} {user.last_name}</h1>
-                <h4 className="fun-fact">Fun Fact: "{user.fun_fact}"</h4>
+                <h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
+                <h4 className="fun-fact">Fun Fact: "{this.state.user.fun_fact}"</h4>
               </section>
 
               <section className="location">
-                <img className="pinpoint" src={props.pinpoint} alt="map"></img>
-                <h4>{user.location}</h4>
+                <img className="pinpoint" src={this.props.pinpoint} alt="map"></img>
+                <h4>{this.state.user.location}</h4>
               </section>
             </div >
             <div className="goals">
               <h3 className="blue-highlight">{user.first_name}'s Goals</h3>
-              {goals.length > 0 ?
+              {this.state.goals.length > 0 ?
                 <div>
                   <div className="goal-wrapper">
-                    {goals.map(goal => (
+                    {this.state.goals.map(goal => (
                       <div className="single-goal" key={goal.id}>
                         <h4 className="blue-highlight">{goal.name}</h4>
                         <h5><span className="right">></span> My Motivation</h5>
