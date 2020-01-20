@@ -36,7 +36,17 @@ export default class RegisterForm extends Component {
     return (
       <div className="auth">
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <h2>Start Resolving</h2>
+          <h2>We are resolve and we can help you start
+            <div className='typewriter'>
+              <Typewriter
+                options={{
+                  strings: ['Resolving.', 'Saving.', 'Eating Healthy.', 'Jogging.', 'Cooking More.'],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
+          </h2>
           <span className="field">
             <label htmlFor="username">Username</label>
             <input
