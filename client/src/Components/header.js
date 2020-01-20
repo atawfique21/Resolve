@@ -30,7 +30,9 @@ export default class Header extends React.Component {
           {this.props.loggedIn ?
             <div className="header-buttons-container">
               <Link to="/feed">Feed</Link>
-              <Link to="/profile">Profile</Link>
+              {this.props.currentUser.id &&
+                <Link to={`/profile/${this.props.currentUser.id}`}>Profile</Link>
+              }
               <Link to="/" onClick={this.props.handleLogout}>Logout</Link>
             </div>
             :

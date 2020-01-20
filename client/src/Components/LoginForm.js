@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Typewriter from 'typewriter-effect'
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -23,7 +24,17 @@ export default class LoginForm extends Component {
     return (
       <div className="auth">
         <form onSubmit={(e) => this.props.handleLogin(e, { username: this.state.username, password: this.state.password })}>
-          <h2>Continue Resolving</h2>
+          <h2>Continue
+          <div className='typewriter'>
+              <Typewriter
+                options={{
+                  strings: ['Resolving', 'Saving', 'Eating Healthy', 'Jogging', 'Cooking More'],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
+          </h2>
           {this.props.errorText && <p className="error-text">{this.props.errorText}</p>}
           <span className="field">
             <label htmlFor="username">Username</label>

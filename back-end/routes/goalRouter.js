@@ -34,7 +34,7 @@ goalRouter.route('/:id')
     }
   })
 
-  .put(restrict, async (req, res, next) => {
+  .put(async (req, res, next) => {
     try {
       const goal = await Goal.findByPk(req.params.id);
       await goal.update(req.body)
@@ -44,7 +44,7 @@ goalRouter.route('/:id')
     }
   })
 
-  .delete(restrict, async (req, res, next) => {
+  .delete(async (req, res, next) => {
     try {
       const goal = await Goal.destroy({ where: { id: req.params.id } })
       res.json(goal)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
+import Typewriter from 'typewriter-effect'
 
 export default class RegisterForm extends Component {
   constructor(props) {
@@ -24,19 +24,29 @@ export default class RegisterForm extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    if (!this.state.profile_pic_url) {
+      this.props.handleRegister(e, { username: this.state.username, password: this.state.password, fun_fact: this.state.fun_fact, location: this.state.location, first_name: this.state.first_name, last_name: this.state.last_name, profile_pic_url: "http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png" })
+    } else {
+      this.props.handleRegister(e, { username: this.state.username, password: this.state.password, fun_fact: this.state.fun_fact, location: this.state.location, first_name: this.state.first_name, last_name: this.state.last_name, profile_pic_url: this.state.profile_pic_url })
+    }
+  }
+
   render() {
     return (
       <div className="auth">
-        <form onSubmit={(e) => this.props.handleRegister(e, {
-          username: this.state.username,
-          password: this.state.password,
-          fun_fact: this.state.fun_fact,
-          location: this.state.location,
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
-          profile_pic_url: this.state.profile_pic_url
-        })}>
-          <h2>Start Resolving</h2>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <h2>We are resolve and we can help you start
+            <div className='typewriter'>
+              <Typewriter
+                options={{
+                  strings: ['Resolving', 'Saving', 'Eating Healthy', 'Jogging', 'Cooking More'],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
+          </h2>
           <span className="field">
             <label htmlFor="username">Username</label>
             <input
