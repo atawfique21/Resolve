@@ -3,6 +3,7 @@ import axios from 'axios'
 import deleteicon from '../Assets/delete.svg'
 import completeicon from '../Assets/complete.svg'
 import editicon from '../Assets/edit.svg'
+import SweetAlert from 'react-bootstrap-sweetalert'
 
 export default class Profile2 extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class Profile2 extends Component {
       user: "",
       goals: [],
       apiDataLoaded: false,
+      alert: null
     }
   }
 
@@ -33,15 +35,15 @@ export default class Profile2 extends Component {
     }
   }
 
-  handleDelete = async (e, goalToDelete) => {
-    e.preventDefault();
+  handleDelete = async (goalToDelete) => {
     try {
       await axios.delete(`http://localhost:3001/goals/${goalToDelete}`);
       const goals = this.state.goals.filter(goal => (
         goal.id !== goalToDelete
       ))
       this.setState({
-        goals
+        goals,
+        alert: null
       })
     } catch (e) {
       console.error(e);
@@ -68,6 +70,37 @@ export default class Profile2 extends Component {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  confirmDelete(e, goalId) {
+    e.preventDefault();
+    console.log('hi')
+    const getAlert = () => (
+      <SweetAlert
+        danger
+        showCancel
+        showCloseButton
+        cancelBtnBsStyle="default"
+        confirmBtnText="Delete"
+        confirmBtnBsStyle="danger"
+        title="Are you sure?"
+        onConfirm={() => this.handleDelete(goalId)}
+        onCancel={this.hideAlert}
+        focusCancelBtn
+      >
+        You will not be able to recover this goal!
+      </SweetAlert>
+    );
+
+    this.setState({
+      alert: getAlert()
+    });
+  }
+
+  hideAlert = () => {
+    this.setState({
+      alert: null
+    });
   }
 
   render() {
@@ -103,7 +136,8 @@ export default class Profile2 extends Component {
                         <div className="task-buttons">
                           <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
                           <img src={editicon} className="task-single-button" id="edit-button"></img>
-                          <img src={deleteicon} className="task-single-button" onClick={(e) => this.handleDelete(e, goal.id)}></img>
+                          <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
+                          {this.state.alert}
                         </div>
                       </div>
                     ))}
