@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios'
 
 export default function Profile(props) {
   const user = props.users.find(user => {
@@ -10,20 +11,20 @@ export default function Profile(props) {
   })
 
 
-delete = async (e, goalToDelete) => {
+  const handleDelete = async (e, goalToDelete) => {
     e.preventDefault();
     try {
-        await axios.delete(`http://localhost:3000/profile/${goalToDelete}`);
-        const goals = this.state.goals.filter(goal => (
-            goal.id !==  goalToDelete
-    ))
-    this.setState({
+      await axios.delete(`http://localhost:3000/profile/${goalToDelete}`);
+      const goals = this.state.goals.filter(goal => (
+        goal.id !== goalToDelete
+      ))
+      this.setState({
         goals
-    })
-} catch (e) {
-    console.error(e);
-}
-}
+      })
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
 
   return (
@@ -51,7 +52,7 @@ delete = async (e, goalToDelete) => {
                   <p>>{goal.motivation}</p>
                   <h5>Plan</h5>
                   <p>>{goal.plan}</p>
-                  <button onClick = {(e) => this.delete(e, goal.id)}>Delete</button>
+                  <button onClick={(e) => this.handleDelete(e, goal.id)}>Delete</button>
                 </div>
               )) :
               <h3>This profile does not have any goals.</h3>
