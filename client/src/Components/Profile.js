@@ -74,7 +74,6 @@ export default class Profile2 extends Component {
 
   confirmDelete(e, goalId) {
     e.preventDefault();
-    console.log('hi')
     const getAlert = () => (
       <SweetAlert
         danger
