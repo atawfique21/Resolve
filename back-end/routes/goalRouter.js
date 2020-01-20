@@ -16,8 +16,7 @@ goalRouter.route('/')
     try {
       const goal = await Goal.create({
         ...req.body,
-        is_complete: false,
-        // userId: res.locals.user.id
+        is_complete: false
       });
       res.json(goal);
     } catch (e) {
