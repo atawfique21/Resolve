@@ -111,25 +111,25 @@ class App extends React.Component {
       <div className="App">
         <Route exact path="/" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
             <LandingPage />
           </div>
         )} />
         <Route path="/login" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
             <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} />
           </div>
         )} />
         <Route path="/register" render={() => (
           <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
             <RegisterForm handleRegister={this.handleRegister} />
           </div>
         )} />
         <Route path="/feed" render={(props) => (
           <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
             <Feed
               users={this.state.users}
               apiDataLoaded={this.state.apiDataLoaded}
