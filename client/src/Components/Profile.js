@@ -60,13 +60,11 @@ export default class Profile2 extends Component {
       const completedGoal = this.state.goals.find(goal => (
         goal.id === completedGoalId
       ));
-      if (completedGoal.is_complete === false) {
-        completedGoal.is_complete = true;
-        this.setState({
-          goals: [...goals, completedGoal]
-        })
-        await axios.put(`http://localhost:3001/goals/${completedGoalId}`, completedGoal);
-      }
+      completedGoal.is_complete = !completedGoal.is_complete
+      this.setState({
+        goals: [...goals, completedGoal]
+      })
+      await axios.put(`http://localhost:3001/goals/${completedGoalId}`, completedGoal);
     } catch (e) {
       console.error(e);
     }
