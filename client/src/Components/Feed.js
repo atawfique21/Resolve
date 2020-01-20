@@ -47,13 +47,10 @@ class Feed extends Component {
   filterUsers = () => {
     let filteredUsers = this.state.users.filter(user =>
       user.first_name.toLowerCase().startsWith(this.state.search.toLowerCase())
-      // this.state.search.toLowerCase().startsWith(user.first_name.toLowerCase())
-      // this.state.search.toLowerCase() === user.first_name.toLowerCase()
     )
     this.setState({
       filteredUsers
     })
-    console.log(this.state.filteredUsers)
   }
 
   render() {
