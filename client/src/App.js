@@ -9,6 +9,7 @@ import axios from 'axios'
 import { Route, withRouter } from 'react-router-dom'
 import { loginUser, registerUser, verifyUser } from './Services/apiHelper'
 import Profile from './Components/Profile';
+import SweetAlert from 'react-bootstrap-sweetalert'
 
 class App extends React.Component {
 
@@ -21,7 +22,8 @@ class App extends React.Component {
       goals: [],
       pinpoint: 'https://image.flaticon.com/icons/png/512/67/67347.png',
       apiDataLoaded: false,
-      errorText: ""
+      errorText: "",
+      alert: null
     }
   }
 
@@ -57,8 +59,7 @@ class App extends React.Component {
     }
   }
 
-  handleRegister = async (e, registerData) => {
-    e.preventDefault();
+  handleRegister = async (registerData) => {
     if (!registerData.username || !registerData.password) {
       this.setState({
         errorText: "Supply Username & Password!"
@@ -70,6 +71,7 @@ class App extends React.Component {
         errorText: ''
       })
       console.log(currentUser)
+      this.onConfirmFinish()
       this.props.history.push('/login');
     }
   }
@@ -89,6 +91,31 @@ class App extends React.Component {
     })
     localStorage.removeItem('authToken');
     this.props.history.push('/');
+  }
+
+  confirmRegister = (e, registerData) => {
+    e.preventDefault();
+    const getAlert = () => (
+      <SweetAlert
+        success
+        title="Welcome to Resolve!"
+        onConfirm={() => this.handleRegister(registerData)}
+        onCancel={() => this.handleRegister(registerData)}
+        timeout={3000}
+      >
+        This confirmation message will automatically close in 3 seconds.
+      </SweetAlert>
+    );
+
+    this.setState({
+      alert: getAlert()
+    });
+  }
+
+  onConfirmFinish = () => {
+    this.setState({
+      alert: null
+    });
   }
 
   componentDidMount = async () => {
@@ -124,7 +151,8 @@ class App extends React.Component {
         <Route path="/register" render={() => (
           <div>
             <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
-            <RegisterForm handleRegister={this.handleRegister} />
+            <RegisterForm handleRegister={this.confirmRegister} />
+            {this.state.alert}
           </div>
         )} />
         <Route path="/feed" render={(props) => (

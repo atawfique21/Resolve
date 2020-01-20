@@ -28,7 +28,7 @@ export default class LoginForm extends Component {
           <div className='typewriter'>
               <Typewriter
                 options={{
-                  strings: ['Resolving.', 'Saving.', 'Eating Healthy.', 'Jogging.', 'Cooking More.'],
+                  strings: ['Resolving', 'Saving', 'Eating Healthy', 'Jogging', 'Cooking More'],
                   autoStart: true,
                   loop: true,
                 }}
