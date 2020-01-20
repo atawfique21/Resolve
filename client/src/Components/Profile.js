@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios'
 import deleteicon from '../Assets/delete.svg'
 import completeicon from '../Assets/complete.svg'
@@ -89,7 +89,7 @@ export default class Profile2 extends Component {
               </section>
             </div >
             <div className="goals">
-              <h3 className="blue-highlight">{user.first_name}'s Goals</h3>
+              <h3 className="blue-highlight">{this.state.user.first_name}'s Goals</h3>
               {this.state.goals.length > 0 ?
                 <div>
                   <div className="goal-wrapper">
@@ -108,10 +108,10 @@ export default class Profile2 extends Component {
                       </div>
                     ))}
                   </div>
-                  <p className="end">🏁 Those are all of {user.first_name}'s goals... for now!</p>
+                  <p className="end">🏁 Those are all of {this.state.user.first_name}'s goals... for now!</p>
                 </div>
                 :
-                <h3 id="no-goals">{user.first_name} does not have any goals set up yet.</h3>
+                <h3 id="no-goals">{this.state.user.first_name} does not have any goals set up yet.</h3>
               }
 
             </div>
