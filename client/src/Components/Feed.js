@@ -59,31 +59,35 @@ class Feed extends Component {
     }
 
     return (
-      <div className="feedpage-wrapper">
-        <AddGoal handleAdd={this.handleAdd} />
-        <Search handleChange={this.handleSearchChange} />
-        <div className="feedpage-content">
-          {this.state.apiDataLoaded && this.state.search &&
-            this.state.filteredUsers.map(user => (
-              <Link style={linkStyle} to={`/profile/${user.id}`}>
-                <div key={user.id} className="users">
-                  <h4>{user.first_name}</h4>
-                  <img src={user.profile_pic_url} alt="user" />
-                </div>
-              </Link>
-            ))
-          }
-          {this.state.apiDataLoaded && !this.state.search &&
-            this.state.users.map(user => (
-              <Link style={linkStyle} to={`/profile/${user.id}`}>
-                <div key={user.id} className="users">
-                  <h4>{user.first_name}</h4>
-                  <img src={user.profile_pic_url} alt="user" />
-                </div>
-              </Link>
-            ))}
+      <div>
+        <div className="feedpage-controls">
+          <Search handleChange={this.handleSearchChange} />
+          <AddGoal handleAdd={this.handleAdd} />
         </div>
-      </div >
+        <div className="feedpage-wrapper">
+          <div className="feedpage-content">
+            {this.state.apiDataLoaded && this.state.search &&
+              this.state.filteredUsers.map(user => (
+                <Link style={linkStyle} to={`/profile/${user.id}`}>
+                  <div key={user.id} className="users">
+                    <h4>{user.first_name}</h4>
+                    <img src={user.profile_pic_url} alt="user" />
+                  </div>
+                </Link>
+              ))
+            }
+            {this.state.apiDataLoaded && !this.state.search &&
+              this.state.users.map(user => (
+                <Link style={linkStyle} to={`/profile/${user.id}`}>
+                  <div key={user.id} className="users">
+                    <h4>{user.first_name}</h4>
+                    <img src={user.profile_pic_url} alt="user" />
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div >
+      </div>
     )
   }
 }
