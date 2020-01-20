@@ -101,9 +101,9 @@ class App extends React.Component {
         title="Welcome to Resolve!"
         onConfirm={() => this.handleRegister(registerData)}
         onCancel={() => this.handleRegister(registerData)}
-        timeout={2000}
+        timeout={3000}
       >
-        This confirmation message will automatically close in 2 seconds.
+        This confirmation message will automatically close in 3 seconds.
       </SweetAlert>
     );
 
