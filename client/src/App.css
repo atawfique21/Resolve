@@ -400,6 +400,38 @@ span.btn {
   opacity: 100%;
 }
 
+.feedpage-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.feedpage-controls > input {
+  min-width: 270px;
+  border-radius: 5px;
+  border: hidden;
+  outline: none;
+  background-color: #695ccd;
+  color: whitesmoke;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.feedpage-controls > input::placeholder {
+  color: whitesmoke;
+}
+
+.feedpage-controls > .submit {
+  min-width: 2vw;
+  margin-top: 0px;
+  align-self: unset;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
 .feedpage-content {
   display: flex;
   flex-wrap: wrap;
