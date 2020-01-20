@@ -69,12 +69,12 @@ class App extends React.Component {
         currentUser,
         errorText: ''
       })
-      console.log(currentUser)
     }
   }
 
   handleVerify = async () => {
     const currentUser = await verifyUser();
+    console.log(currentUser);
     if (currentUser) {
       this.setState({
         currentUser
@@ -108,40 +108,26 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
         <Route exact path="/" render={() => (
-          <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <LandingPage />
-          </div>
         )} />
         <Route path="/login" render={() => (
-          <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} />
-          </div>
         )} />
         <Route path="/register" render={() => (
-          <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
             <RegisterForm handleRegister={this.handleRegister} />
-          </div>
         )} />
         <Route path="/feed" render={(props) => (
-          <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
-            <Feed users={this.state.users} />
-          </div>
+            <Feed users={this.state.users} currentUser={this.state.currentUser}/>
         )} />
         <Route exact path="/profile/:id" render={(props) => (
-          <div>
-            <Header />
             <Profile
               users={this.state.users}
               goals={this.state.goals}
               pinpoint={this.state.pinpoint}
               userId={props.match.params.id}
             />
-          </div>
         )} />
       </div>
     );
