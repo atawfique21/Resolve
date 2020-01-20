@@ -48,6 +48,28 @@ export default class Profile2 extends Component {
     }
   }
 
+
+  goalComplete = async (e, completedGoalId) => {
+    e.preventDefault();
+    try {
+      const goals = this.state.goals.filter(goal => (
+        goal.id !== completedGoalId
+      ))
+      const completedGoal = this.state.goals.find(goal => (
+        goal.id === completedGoalId
+      ));
+      if (completedGoal.is_complete === false) {
+        completedGoal.is_complete = true;
+        this.setState({
+          goals: [...goals, completedGoal]
+        })
+        await axios.put(`http://localhost:3001/goals/${completedGoalId}`, completedGoal);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -72,14 +94,14 @@ export default class Profile2 extends Component {
                 <div>
                   <div className="goal-wrapper">
                     {this.state.goals.map(goal => (
-                      <div className="single-goal" key={goal.id}>
+                      <div className={goal.is_complete ? "complete single-goal" : "incomplete single-goal"} key={goal.id}>
                         <h4 className="blue-highlight">{goal.name}</h4>
                         <h5><span className="right">></span> My Motivation</h5>
                         <p>{goal.motivation}</p>
                         <h5><span className="right">></span> My Plan</h5>
                         <p>{goal.plan}</p>
                         <div className="task-buttons">
-                          <img src={completeicon} className="task-single-button"></img>
+                          <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
                           <img src={editicon} className="task-single-button" id="edit-button"></img>
                           <img src={deleteicon} className="task-single-button" onClick={(e) => this.handleDelete(e, goal.id)}></img>
                         </div>
