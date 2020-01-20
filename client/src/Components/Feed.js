@@ -19,7 +19,12 @@ class Feed extends Component {
 
   handleAdd = async (e, sentGoal) => {
     e.preventDefault();
-    const currentGoal = await createGoal(sentGoal);
+    const currentUser = this.props.currentUser;
+    const goal = {
+      sentGoal,
+      currentUser
+    }
+    const currentGoal = await createGoal(goal);
     console.log(currentGoal)
   }
 
@@ -59,7 +64,7 @@ class Feed extends Component {
     }
 
     return (
-      <div>
+        <div>
         <div className="feedpage-controls">
           <Search handleChange={this.handleSearchChange} />
           <AddGoal handleAdd={this.handleAdd} />
@@ -68,7 +73,7 @@ class Feed extends Component {
           <div className="feedpage-content">
             {this.state.apiDataLoaded && this.state.search &&
               this.state.filteredUsers.map(user => (
-                <Link style={linkStyle} to={`/profile/${user.id}`}>
+                <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
                   <div key={user.id} className="users">
                     <h4>{user.first_name}</h4>
                     <img src={user.profile_pic_url} alt="user" />
@@ -78,7 +83,7 @@ class Feed extends Component {
             }
             {this.state.apiDataLoaded && !this.state.search &&
               this.state.users.map(user => (
-                <Link style={linkStyle} to={`/profile/${user.id}`}>
+                <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
                   <div key={user.id} className="users">
                     <h4>{user.first_name}</h4>
                     <img src={user.profile_pic_url} alt="user" />
