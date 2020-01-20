@@ -221,7 +221,7 @@ form > h2 {
   flex-direction: row;
   justify-content: space-evenly;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(250, 250, 250);
   min-height: 10%;
 }
 
@@ -239,11 +239,17 @@ form > h2 {
   flex-direction: column;
   /* justify-content: flex-end; */
   margin-right: auto 0;
+  font-size: 1.3rem;
+}
+
+.fun-fact {
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .profile .pinpoint {
 max-width: auto;
-max-height: 20px;
+max-height: 30px;
 margin-right: auto;
 }
 
@@ -251,12 +257,103 @@ margin-right: auto;
   display: flex;
   flex-direction: row;
   margin-right: auto 0;
+  font-size: 14px;
+  justify-self: center;
 }
 
-.profile .single-goal {
-  background-color: rgb(255, 221, 185);
+.location > h4 {
+  margin-top: 10%;
+}
+
+.goal-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.goals > h3{
+  color: whitesmoke;
+  text-align: center;
+  font-size: 30px;
+}
+
+#no-goals {
+  margin-top: 5em;
+}
+
+.single-goal {
+  background-color: rgb(250, 250, 250);
   padding: 1vw;
   margin: 1vw;
+  max-width: 20%;
+  min-width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  border-radius: 4px;
+}
+
+.single-goal > h4 {
+  color: whitesmoke;
+  font-size: 25px;
+  padding-left: 3.5px;
+  margin-bottom: 0.5em;
+  letter-spacing: 6px;
+}
+
+.right {
+  position: relative;
+  bottom: 0.1em;
+  right: -0.3em;
+  font-weight: 400;
+}
+
+.single-goal > h5 {
+  font-size: 22px;
+  font-weight: 630;
+  letter-spacing: 3px;
+}
+
+.single-goal > p {
+  margin-bottom: 0.5em;
+  font-size: 18px;
+}
+
+.single-goal > p {
+  text-align: center;
+  max-width: 80%;
+}
+
+.end {
+  color: whitesmoke;
+  text-align: center;
+  opacity: 70%;
+  margin-top: 8em;
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.task-single-button {
+  height: auto;
+  max-width: 2.5em;
+  opacity: 60%;
+  transition: all 0.35s ease-in-out;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#edit-button {
+  max-width: 1.9em;
+  position: relative;
+  bottom: 1px;
+}
+
+.task-single-button:hover {
+  opacity: 100%;
 }
 
 .feedpage-content {
