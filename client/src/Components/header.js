@@ -27,7 +27,7 @@ export default class Header extends React.Component {
             <h5>The social way to resolve goals</h5>
           </div>
 
-          {this.props.loggedIn ?
+          {this.props.currentUser ?
             <div className="header-buttons-container">
               <Link to="/feed">Feed</Link>
               {this.props.currentUser.id &&

@@ -137,12 +137,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} />
+        <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
         <Route exact path="/" render={() => (
-            <LandingPage />
+          <LandingPage />
         )} />
         <Route path="/login" render={() => (
-            <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} />
+          <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} />
         )} />
         <Route path="/register" render={() => (
           <div>
@@ -152,17 +152,16 @@ class App extends React.Component {
         )} />
         <Route path="/feed" render={(props) => (
           <div>
-            <Header loggedIn={this.state.currentUser} handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
             <Feed />
           </div>
         )} />
         <Route exact path="/profile/:id" render={(props) => (
-            <Profile
-              users={this.state.users}
-              goals={this.state.goals}
-              pinpoint={this.state.pinpoint}
-              userId={props.match.params.id}
-            />
+          <Profile
+            users={this.state.users}
+            goals={this.state.goals}
+            pinpoint={this.state.pinpoint}
+            userId={props.match.params.id}
+          />
         )} />
       </div>
     );
