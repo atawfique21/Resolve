@@ -33,7 +33,7 @@ export default class Profile2 extends Component {
     }
   }
 
-  delete = async (e, goalToDelete) => {
+  handleDelete = async (e, goalToDelete) => {
     e.preventDefault();
     try {
       await axios.delete(`http://localhost:3001/goals/${goalToDelete}`);
