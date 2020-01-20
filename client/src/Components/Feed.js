@@ -15,7 +15,12 @@ class Feed extends Component {
 
   handleAdd = async (e, sentGoal) => {
     e.preventDefault();
-    const currentGoal = await createGoal(sentGoal);
+    const currentUser = this.props.currentUser;
+    const goal = {
+      sentGoal,
+      currentUser
+    }
+    const currentGoal = await createGoal(goal);
     console.log(currentGoal)
   }
 
@@ -29,7 +34,7 @@ class Feed extends Component {
         <AddGoal handleAdd={this.handleAdd} />
         <div className="feedpage-content">
           {this.props.users.map(user => (
-            <Link style={linkStyle} to={`/profile/${user.id}`}>
+            <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
               <div key={user.id} className="users">
                 <h4>{user.first_name}</h4>
                 <img src={user.profile_pic_url} alt="user" />
