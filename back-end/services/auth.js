@@ -18,7 +18,7 @@ const genToken = (data) => {
   return token;
 };
 
-const restrict = (req, res, next) => {
+const restrict = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     const data = jwt.verify(token, TOKEN_KEY);

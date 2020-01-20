@@ -23,6 +23,11 @@ userRouter.get('/', async (req, res) => {
   res.json(user);
 })
 
+userRouter.get('/verify', restrict, async (req, res) => {
+  const user = res.locals.user;
+  res.json(user);
+})
+
 userRouter.get('/:id', async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
@@ -47,7 +52,7 @@ userRouter.post('/register', async (req, res, next) => {
       last_name,
       profile_pic_url
     });
-
+    res.locals.user = user;
     const respData = buildAuthResponse(user);
 
     res.json(respData);
@@ -66,7 +71,7 @@ userRouter.post('/login', async (req, res) => {
 
     if (await checkPassword(req.body.password, user.password_digest)) {
       const respData = buildAuthResponse(user);
-
+      res.locals.user = user;
       res.json(respData);
     } else {
       res.status(401).send('Invalid Credentials');
@@ -76,10 +81,5 @@ userRouter.post('/login', async (req, res) => {
     res.status(401).send('Invalid Credentials');
   }
 });
-
-userRouter.get('/verify', restrict, (req, res) => {
-  const user = res.locals.user;
-  res.json(user);
-})
 
 module.exports = userRouter;
