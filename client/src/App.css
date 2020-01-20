@@ -311,6 +311,30 @@ margin-right: auto;
   background-color: rgb(179, 230, 132);
 }
 
+span.btn {
+  background-color: transparent;
+}
+
+.btn {
+  background-color: black;
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 20px;
+  opacity: 50%;
+  transition: all 0.15s ease-in-out;
+  border-radius: 3px;
+  padding: 8px;
+}
+
+.btn-danger {
+  background-color: crimson;
+  font-weight: 800;
+}
+
+.btn:hover {
+  opacity: 100%;
+}
+
 .single-goal > h4 {
   color: whitesmoke;
   font-size: 25px;
