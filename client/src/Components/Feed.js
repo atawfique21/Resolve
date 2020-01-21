@@ -57,6 +57,10 @@ class Feed extends Component {
     })
   }
 
+  addDefaultSrc(ev) {
+    ev.target.src = 'http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png'
+  }
+
   render() {
     const linkStyle = {
       textDecoration: "none",
@@ -75,7 +79,7 @@ class Feed extends Component {
                 <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
                   <div key={user.id} className="users">
                     <h4>{user.first_name}</h4>
-                    <img src={user.profile_pic_url} alt="user" />
+                    <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
                   </div>
                 </Link>
               ))
@@ -85,7 +89,7 @@ class Feed extends Component {
                 <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
                   <div key={user.id} className="users">
                     <h4>{user.first_name}</h4>
-                    <img src={user.profile_pic_url} alt="user" />
+                    <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
                   </div>
                 </Link>
               ))}

@@ -102,6 +102,10 @@ export default class Profile extends Component {
     });
   }
 
+  addDefaultSrc(ev) {
+    ev.target.src = 'http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png'
+  }
+
   hideAlert = () => {
     this.setState({
       alert: null
@@ -114,7 +118,7 @@ export default class Profile extends Component {
         {this.state.user && (
           <div>
             <div className="profile">
-              <img src={this.state.user.profile_pic_url} alt="profile" className="profile-image"></img>
+              <img onError={this.addDefaultSrc} src={this.state.user.profile_pic_url} alt="profile" className="profile-image"></img>
 
               <section className="names">
                 <h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
