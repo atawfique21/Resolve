@@ -24,7 +24,7 @@ class Feed extends Component {
       name: sentGoal.name,
       plan: sentGoal.plan,
       motivation: sentGoal.motivation,
-      user_id: 2
+      user_id: this.props.currentUser.id
     }
     const currentGoal = await createGoal(goal);
   }
