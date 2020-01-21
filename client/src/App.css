@@ -19,6 +19,24 @@ header {
   justify-content: center;
 }
 
+.restrict {
+  margin: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.restrict > h1 {
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+.restrict > h1 > a {
+  color: whitesmoke;
+  font-weight: 700;
+}
+
 .header-container {
   min-width: 95%;
   display: flex;
