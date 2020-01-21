@@ -294,6 +294,17 @@ margin-right: auto;
   margin-top: 10%;
 }
 
+.add-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.add-button > button {
+  min-width: 20%;
+}
+
 .goal-wrapper {
   display: flex;
   flex-wrap: wrap;
