@@ -5,7 +5,7 @@ import completeicon from '../Assets/complete.svg'
 import editicon from '../Assets/edit.svg'
 import SweetAlert from 'react-bootstrap-sweetalert'
 
-export default class Profile2 extends Component {
+export default class Profile extends Component {
   constructor(props) {
     super(props)
 
@@ -61,9 +61,15 @@ export default class Profile2 extends Component {
         goal.id === completedGoalId
       ));
       completedGoal.is_complete = !completedGoal.is_complete
-      this.setState({
-        goals: [...goals, completedGoal]
-      })
+      if (completedGoal.is_complete === true) {
+        this.setState({
+          goals: [...goals, completedGoal]
+        })
+      } else {
+        this.setState({
+          goals: [completedGoal, ...goals]
+        })
+      }
       await axios.put(`http://localhost:3001/goals/${completedGoalId}`, completedGoal);
     } catch (e) {
       console.error(e);
