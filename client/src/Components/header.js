@@ -16,6 +16,10 @@ class Header extends React.Component {
     }
   }
 
+  handleProfileClick = () => {
+    this.props.history.push(`/myprofile`)
+  }
+
   render() {
     return (
       <header>
@@ -28,7 +32,7 @@ class Header extends React.Component {
             <div className="header-buttons-container">
               <Link to="/feed">Feed</Link>
               {this.props.currentUser.id &&
-                <Link to={`/profile/${this.props.currentUser.id}`}>Profile</Link>
+                <Link onClick={this.handleProfileClick}>Profile</Link>
               }
               <Link to="/" onClick={this.props.handleLogout}>Logout</Link>
             </div>

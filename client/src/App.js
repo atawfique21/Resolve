@@ -10,6 +10,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { loginUser, registerUser, verifyUser } from './Services/apiHelper'
 import Profile from './Components/Profile';
 import SweetAlert from 'react-bootstrap-sweetalert'
+import MyProfile from './Components/MyProfile'
 
 class App extends React.Component {
 
@@ -169,6 +170,17 @@ class App extends React.Component {
         {this.state.apiDataLoaded &&
           <Route exact path="/profile/:id" render={(props) => (
             <Profile
+              users={this.state.users}
+              goals={this.state.goals}
+              pinpoint={this.state.pinpoint}
+              userId={props.match.params.id}
+              currentUser={this.state.currentUser}
+            />
+          )} />
+        }
+        {this.state.apiDataLoaded &&
+          <Route exact path="/myprofile" render={(props) => (
+            <MyProfile
               users={this.state.users}
               goals={this.state.goals}
               pinpoint={this.state.pinpoint}

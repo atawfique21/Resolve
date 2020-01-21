@@ -151,6 +151,7 @@ header {
   background-color: #695ccd;
   padding: 1px;
   font-weight: 600;
+  text-align: center;
 }
 
 .white {
@@ -345,8 +346,10 @@ margin-right: auto;
 }
 
 .goal-wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: space-around;
+  grid-auto-flow: row dense;
   transition: all 0.5s ease-in-out;
 }
 
@@ -365,8 +368,8 @@ margin-right: auto;
 .single-goal {
   padding: 1vw;
   margin: 1vw;
-  max-width: 20%;
-  min-width: 20%;
+  /* max-width: 20%;
+  min-width: 20%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -431,17 +434,18 @@ span.btn {
 }
 
 .single-goal > h5 {
-  /* font-size: 22px; */
-  font-size: 1.65vw;
-  font-weight: 630;
-  /* letter-spacing: 3px; */
-  letter-spacing: .23vw;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 18px;
+  text-align: center;
 }
 
 .single-goal > p {
   margin-bottom: 0.5em;
   /* font-size: 18px; */
-  font-size: 1.35vw;
+  font-size: 16px;
+
 }
 
 .single-goal > p {
@@ -523,15 +527,19 @@ span.btn {
 }
 
 .feedpage-content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   justify-content: space-around;
+  grid-auto-flow: row dense;
 }
 
 .users {
   background-color: white;
   padding: 2vw;
   margin: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .users > h4 {
