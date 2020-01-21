@@ -35,7 +35,7 @@ export default class AddGoal extends React.Component {
 
   render() {
     return (
-      <Popup trigger={<button className="submit"> Create a Goal </button>} modal>
+      <Popup trigger={<button className="submit"> Add a new Goal </button>} modal>
         {close => (
           <div className="modal">
             <a className="close" onClick={close}><h5>X</h5></a>
