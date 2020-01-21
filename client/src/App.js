@@ -155,14 +155,16 @@ class App extends React.Component {
             <Feed />
           </div>
         )} />
-        <Route exact path="/profile/:id" render={(props) => (
-          <Profile
-            users={this.state.users}
-            goals={this.state.goals}
-            pinpoint={this.state.pinpoint}
-            userId={props.match.params.id}
-          />
-        )} />
+        {this.state.apiDataLoaded &&
+          <Route exact path="/profile/:id" render={(props) => (
+            <Profile
+              users={this.state.users}
+              goals={this.state.goals}
+              pinpoint={this.state.pinpoint}
+              userId={props.match.params.id}
+            />
+          )} />
+        }
       </div>
     );
   }
