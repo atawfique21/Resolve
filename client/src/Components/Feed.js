@@ -19,7 +19,6 @@ class Feed extends Component {
 
   handleAdd = async (e, sentGoal) => {
     e.preventDefault();
-    console.log(sentGoal)
     const goal = {
       name: sentGoal.name,
       plan: sentGoal.plan,
@@ -36,7 +35,6 @@ class Feed extends Component {
         users: userResponse.data,
         apiDataLoaded: true
       })
-      console.log(this.state.users)
     } catch (e) {
       console.error(e)
     }

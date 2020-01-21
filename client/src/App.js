@@ -39,7 +39,6 @@ class App extends React.Component {
       try {
         const currentUser = await loginUser(loginData);
         this.setState({ currentUser })
-        console.log(currentUser)
         this.setState({
           errorText: ''
         })
@@ -78,7 +77,6 @@ class App extends React.Component {
 
   handleVerify = async () => {
     const currentUser = await verifyUser();
-    console.log(currentUser);
     if (currentUser) {
       this.setState({
         currentUser
@@ -96,11 +94,9 @@ class App extends React.Component {
 
   onlyRegisterOnce = (registerData) => {
     if (this.state.counter === 0) {
-      console.log('hi')
       this.handleRegister(registerData)
       let button = document.querySelector('.btn-primary')
       button.style.display = 'none';
-      console.log(button)
       this.setState({
         counter: 1
       })
