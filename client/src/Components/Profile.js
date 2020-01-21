@@ -4,6 +4,8 @@ import deleteicon from '../Assets/delete.svg'
 import completeicon from '../Assets/complete.svg'
 import editicon from '../Assets/edit.svg'
 import SweetAlert from 'react-bootstrap-sweetalert'
+import { createGoal } from '../Services/apiHelper'
+import AddGoal from './AddGoal'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -112,6 +114,17 @@ export default class Profile extends Component {
     });
   }
 
+  handleAdd = async (e, sentGoal) => {
+    e.preventDefault();
+    const goal = {
+      name: sentGoal.name,
+      plan: sentGoal.plan,
+      motivation: sentGoal.motivation,
+      user_id: this.props.currentUser.id
+    }
+    const currentGoal = await createGoal(goal);
+  }
+
   render() {
     return (
       <div>
@@ -138,6 +151,11 @@ export default class Profile extends Component {
                 </div >
                 <div className="goals">
                   <h3 className="blue-highlight">{this.state.user.first_name}'s Goals</h3>
+                  {this.state.user.id === this.props.currentUser.id &&
+                    <div className="add-button">
+                      <AddGoal handleAdd={this.handleAdd} />
+                    </div>
+                  }
                   {this.state.goals.length > 0 ?
                     <div>
                       <div className="goal-wrapper">
@@ -148,12 +166,14 @@ export default class Profile extends Component {
                             <p>{goal.motivation}</p>
                             <h5><span className="right">></span> My Plan</h5>
                             <p>{goal.plan}</p>
-                            <div className="task-buttons">
-                              <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
-                              <img src={editicon} className="task-single-button" id="edit-button"></img>
-                              <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
-                              {this.state.alert}
-                            </div>
+                            {this.state.user.id === this.props.currentUser.id &&
+                              <div className="task-buttons">
+                                <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
+                                <img src={editicon} className="task-single-button" id="edit-button"></img>
+                                <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
+                                {this.state.alert}
+                              </div>
+                            }
                           </div>
                         ))}
                       </div>
