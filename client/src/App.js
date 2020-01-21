@@ -23,7 +23,8 @@ class App extends React.Component {
       pinpoint: 'https://image.flaticon.com/icons/png/512/67/67347.png',
       apiDataLoaded: false,
       errorText: "",
-      alert: null
+      alert: null,
+      counter: 0
     }
   }
 
@@ -70,7 +71,6 @@ class App extends React.Component {
         currentUser,
         errorText: ''
       })
-      console.log(currentUser)
       this.onConfirmFinish()
       this.props.history.push('/feed');
     }
@@ -94,14 +94,29 @@ class App extends React.Component {
     this.props.history.push('/');
   }
 
+  onlyRegisterOnce = (registerData) => {
+    if (this.state.counter === 0) {
+      console.log('hi')
+      this.handleRegister(registerData)
+      let button = document.querySelector('.btn-primary')
+      button.style.display = 'none';
+      console.log(button)
+      this.setState({
+        counter: 1
+      })
+    } else {
+      return
+    }
+  }
+
   confirmRegister = (e, registerData) => {
     e.preventDefault();
     const getAlert = () => (
       <SweetAlert
         success
         title="Welcome to Resolve!"
-        onConfirm={() => this.handleRegister(registerData)}
-        onCancel={() => this.handleRegister(registerData)}
+        onConfirm={() => this.onlyRegisterOnce(registerData)}
+        onCancel={() => this.onlyRegisterOnce(registerData)}
         timeout={3000}
       >
         This confirmation message will automatically close in 3 seconds.
