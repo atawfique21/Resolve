@@ -148,12 +148,14 @@ export default class Profile extends Component {
                             <p>{goal.motivation}</p>
                             <h5><span className="right">></span> My Plan</h5>
                             <p>{goal.plan}</p>
-                            <div className="task-buttons">
-                              <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
-                              <img src={editicon} className="task-single-button" id="edit-button"></img>
-                              <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
-                              {this.state.alert}
-                            </div>
+                            {this.state.user.id === this.props.currentUser.id &&
+                              <div className="task-buttons">
+                                <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
+                                <img src={editicon} className="task-single-button" id="edit-button"></img>
+                                <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
+                                {this.state.alert}
+                              </div>
+                            }
                           </div>
                         ))}
                       </div>
