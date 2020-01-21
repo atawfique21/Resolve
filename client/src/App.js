@@ -153,11 +153,11 @@ class App extends React.Component {
           <LandingPage />
         )} />
         <Route path="/login" render={() => (
-          <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} />
+          <LoginForm handleLogin={this.handleLogin} errorText={this.state.errorText} currentUser={this.state.currentUser} />
         )} />
         <Route path="/register" render={() => (
           <div>
-            <RegisterForm handleRegister={this.confirmRegister} />
+            <RegisterForm handleRegister={this.confirmRegister} currentUser={this.state.currentUser} />
             {this.state.alert}
           </div>
         )} />
