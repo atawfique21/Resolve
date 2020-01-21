@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import deleteicon from '../Assets/delete.svg'
 import completeicon from '../Assets/complete.svg'
-import editicon from '../Assets/edit.svg'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import { createGoal } from '../Services/apiHelper'
 import AddGoal from './AddGoal'
+import EditGoal from './EditGoal'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -15,7 +15,8 @@ export default class Profile extends Component {
       user: "",
       goals: [],
       apiDataLoaded: false,
-      alert: null
+      alert: null,
+      showEditGoal: false
     }
   }
 
@@ -125,6 +126,13 @@ export default class Profile extends Component {
     const currentGoal = await createGoal(goal);
   }
 
+  handleEdit = async (e, sentGoal) => {
+    e.preventDefault();
+    this.setState({
+      showEditGoal: true
+    })
+  }
+
   render() {
     return (
       <div>
@@ -169,7 +177,7 @@ export default class Profile extends Component {
                             {this.state.user.id === this.props.currentUser.id &&
                               <div className="task-buttons">
                                 <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
-                                <img src={editicon} className="task-single-button" id="edit-button"></img>
+                                <EditGoal goalId={goal.id} />
                                 <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
                                 {this.state.alert}
                               </div>
