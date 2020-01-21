@@ -1,21 +1,19 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 
   constructor(props) {
     super(props)
-
-    this.state = {
-      redirect_home: false
-    }
   }
 
   handleClick = (e) => {
     e.preventDefault();
-    this.setState({
-      redirect_home: true
-    })
+    if (this.props.currentUser) {
+      this.props.history.push('/feed')
+    } else {
+      this.props.history.push('/')
+    }
   }
 
   render() {
@@ -26,7 +24,6 @@ export default class Header extends React.Component {
             <h1>Resolve</h1>
             <h5>The social way to resolve goals</h5>
           </div>
-
           {this.props.currentUser ?
             <div className="header-buttons-container">
               <Link to="/feed">Feed</Link>
@@ -41,10 +38,10 @@ export default class Header extends React.Component {
               <Link to="/register">Sign Up</Link>
             </div>
           }
-
         </div>
-        {this.state.redirect_home ? <Redirect to="/" /> : null}
       </header >
     )
   }
 }
+
+export default withRouter(Header)
