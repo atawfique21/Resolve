@@ -152,7 +152,7 @@ class App extends React.Component {
         )} />
         <Route path="/feed" render={(props) => (
           <div>
-            <Feed />
+            <Feed currentUser={this.state.currentUser} />
           </div>
         )} />
         {this.state.apiDataLoaded &&

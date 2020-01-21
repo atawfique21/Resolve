@@ -19,13 +19,14 @@ class Feed extends Component {
 
   handleAdd = async (e, sentGoal) => {
     e.preventDefault();
-    const currentUser = this.props.currentUser;
+    console.log(sentGoal)
     const goal = {
-      sentGoal,
-      currentUser
+      name: sentGoal.name,
+      plan: sentGoal.plan,
+      motivation: sentGoal.motivation,
+      user_id: 2
     }
     const currentGoal = await createGoal(goal);
-    console.log(currentGoal)
   }
 
   componentDidMount = async () => {
@@ -64,7 +65,7 @@ class Feed extends Component {
     }
 
     return (
-        <div>
+      <div>
         <div className="feedpage-controls">
           <Search handleChange={this.handleSearchChange} />
           <AddGoal handleAdd={this.handleAdd} />
