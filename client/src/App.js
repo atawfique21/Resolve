@@ -72,7 +72,7 @@ class App extends React.Component {
       })
       console.log(currentUser)
       this.onConfirmFinish()
-      this.props.history.push('/login');
+      this.props.history.push('/feed');
     }
   }
 
