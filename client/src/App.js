@@ -173,6 +173,7 @@ class App extends React.Component {
               goals={this.state.goals}
               pinpoint={this.state.pinpoint}
               userId={props.match.params.id}
+              currentUser={this.state.currentUser}
             />
           )} />
         }
