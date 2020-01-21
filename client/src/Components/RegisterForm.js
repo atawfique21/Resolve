@@ -13,7 +13,8 @@ export default class RegisterForm extends Component {
       location: '',
       first_name: '',
       last_name: '',
-      profile_pic_url: ''
+      profile_pic_url: '',
+      errorText: ''
     }
   }
 
@@ -25,7 +26,12 @@ export default class RegisterForm extends Component {
   }
 
   handleSubmit = (e) => {
-    if (!this.state.profile_pic_url) {
+    e.preventDefault();
+    if (!this.state.username || !this.state.password || !this.state.fun_fact || !this.state.location || !this.state.first_name || !this.state.last_name) {
+      this.setState({
+        errorText: "Please fill in all of the required fields!"
+      })
+    } else if (!this.state.profile_pic_url) {
       this.props.handleRegister(e, { username: this.state.username, password: this.state.password, fun_fact: this.state.fun_fact, location: this.state.location, first_name: this.state.first_name, last_name: this.state.last_name, profile_pic_url: "http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png" })
     } else {
       this.props.handleRegister(e, { username: this.state.username, password: this.state.password, fun_fact: this.state.fun_fact, location: this.state.location, first_name: this.state.first_name, last_name: this.state.last_name, profile_pic_url: this.state.profile_pic_url })
@@ -55,8 +61,9 @@ export default class RegisterForm extends Component {
                   />
                 </div>
               </h2>
+              {this.state.errorText && <p className="error-text">{this.state.errorText}</p>}
               <span className="field">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">Username*</label>
                 <input
                   type="text"
                   name="username"
@@ -69,7 +76,7 @@ export default class RegisterForm extends Component {
                 />
               </span>
               <span className="field">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password*</label>
                 <input
                   type="password"
                   name="password"
@@ -78,7 +85,7 @@ export default class RegisterForm extends Component {
                 />
               </span>
               <span className="field">
-                <label htmlFor="fun_fact">Fun Fact</label>
+                <label htmlFor="fun_fact">Fun Fact*</label>
                 <input
                   type="text"
                   name="fun_fact"
@@ -87,7 +94,7 @@ export default class RegisterForm extends Component {
                 />
               </span>
               <span className="field">
-                <label htmlFor="location">Your Location</label>
+                <label htmlFor="location">Your Location*</label>
                 <input
                   type="text"
                   name="location"
@@ -96,7 +103,7 @@ export default class RegisterForm extends Component {
                 />
               </span>
               <span className="field">
-                <label htmlFor="first_name">First Name</label>
+                <label htmlFor="first_name">First Name*</label>
                 <input
                   type="text"
                   name="first_name"
@@ -105,7 +112,7 @@ export default class RegisterForm extends Component {
                 />
               </span>
               <span className="field">
-                <label htmlFor="last_name">Last Name</label>
+                <label htmlFor="last_name">Last Name*</label>
                 <input
                   type="text"
                   name="last_name"
@@ -114,7 +121,7 @@ export default class RegisterForm extends Component {
                 />
               </span>
               <span className="field">
-                <label htmlFor="profile_pic_url">profile url</label>
+                <label htmlFor="profile_pic_url">Profile Picture URL</label>
                 <input
                   type="text"
                   name="profile_pic_url"
