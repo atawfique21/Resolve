@@ -68,33 +68,41 @@ class Feed extends Component {
 
     return (
       <div>
-        <div className="feedpage-controls">
-          <Search handleChange={this.handleSearchChange} />
-          <AddGoal handleAdd={this.handleAdd} />
-        </div>
-        <div className="feedpage-wrapper">
-          <div className="feedpage-content">
-            {this.state.apiDataLoaded && this.state.search &&
-              this.state.filteredUsers.map(user => (
-                <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
-                  <div key={user.id} className="users">
-                    <h4>{user.first_name}</h4>
-                    <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
-                  </div>
-                </Link>
-              ))
-            }
-            {this.state.apiDataLoaded && !this.state.search &&
-              this.state.users.map(user => (
-                <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
-                  <div key={user.id} className="users">
-                    <h4>{user.first_name}</h4>
-                    <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
-                  </div>
-                </Link>
-              ))}
+        {!this.props.currentUser ?
+          <div className="restrict">
+            <h1>Please <a href="/login">login</a> to see your feed.</h1>
           </div>
-        </div >
+          :
+          <div>
+            <div className="feedpage-controls">
+              <Search handleChange={this.handleSearchChange} />
+              <AddGoal handleAdd={this.handleAdd} />
+            </div>
+            <div className="feedpage-wrapper">
+              <div className="feedpage-content">
+                {this.state.apiDataLoaded && this.state.search &&
+                  this.state.filteredUsers.map(user => (
+                    <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
+                      <div key={user.id} className="users">
+                        <h4>{user.first_name}</h4>
+                        <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
+                      </div>
+                    </Link>
+                  ))
+                }
+                {this.state.apiDataLoaded && !this.state.search &&
+                  this.state.users.map(user => (
+                    <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
+                      <div key={user.id} className="users">
+                        <h4>{user.first_name}</h4>
+                        <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
+                      </div>
+                    </Link>
+                  ))}
+              </div>
+            </div >
+          </div>
+        }
       </div>
     )
   }
