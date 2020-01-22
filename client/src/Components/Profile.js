@@ -3,7 +3,7 @@ import axios from 'axios'
 import deleteicon from '../Assets/delete.svg'
 import completeicon from '../Assets/complete.svg'
 import SweetAlert from 'react-bootstrap-sweetalert'
-import { createGoal } from '../Services/apiHelper'
+import { createGoal, editGoal } from '../Services/apiHelper'
 import AddGoal from './AddGoal'
 import EditGoal from './EditGoal'
 
@@ -54,7 +54,6 @@ export default class Profile extends Component {
       console.error(e);
     }
   }
-
 
   goalComplete = async (e, completedGoalId) => {
     e.preventDefault();
@@ -126,9 +125,6 @@ export default class Profile extends Component {
     const currentGoal = await createGoal(goal);
     const goalResponse = await axios(`http://localhost:3001/goals`);
     let goals = goalResponse.data;
-    const user = this.props.users.find(user => {
-      return user.id === parseInt(this.props.userId)
-    })
     goals = goals.filter(goal => {
       return goal.user_id === parseInt(this.props.userId)
     })
@@ -137,10 +133,25 @@ export default class Profile extends Component {
     })
   }
 
-  handleEdit = async (e, sentGoal) => {
+  handleEdit = async (e, sentGoal, goalId) => {
     e.preventDefault();
+    const goal = {
+      name: sentGoal.name,
+      plan: sentGoal.plan,
+      motivation: sentGoal.motivation,
+      user_id: this.props.currentUser.id
+    }
+    const id = goalId;
+    const currentGoal = await axios.put(`http://localhost:3001/goals/${goalId}`, goal);
+
+    //returning the goals
+    const goalResponse = await axios(`http://localhost:3001/goals`);
+    let goals = goalResponse.data;
+    goals = goals.filter(goal => {
+      return goal.user_id === parseInt(this.props.userId)
+    })
     this.setState({
-      showEditGoal: true
+      goals
     })
   }
 
@@ -188,7 +199,8 @@ export default class Profile extends Component {
                             {this.state.user.id === this.props.currentUser.id &&
                               <div className="task-buttons">
                                 <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
-                                <EditGoal goalId={goal.id} />
+                                <EditGoal goalId={goal.id}
+                                  handleEdit={this.handleEdit} />
                                 <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
                                 {this.state.alert}
                               </div>

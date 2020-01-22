@@ -38,6 +38,14 @@ export default class EditGoal extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.handleEdit(e, { name: this.state.title, motivation: this.state.motivation, plan: this.state.plan }, this.props.goalId)
+    this.setState({
+      emoji: "",
+      title: "",
+      motivation: "",
+      plan: "",
+      errorText: ""
+    })
   }
 
   render() {
