@@ -60,7 +60,7 @@ export default class EditGoal extends React.Component {
           <div className="modal">
             <a className="close" onClick={close}><h5>X</h5></a>
             <div className="header"> Edit Goal </div>
-            <form onSubmit={(e) => this.handleSubmit(e)}>
+            <form onSubmit={(e) => { this.handleSubmit(e); close(); }} >
               {this.errorText && <p className="error-text">{this.errorText}</p>}
               <span className="field">
                 <label htmlFor="Title"><span className="blue-highlight white">Name</span> your goal</label>
