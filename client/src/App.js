@@ -71,7 +71,14 @@ class App extends React.Component {
         currentUser,
         errorText: ''
       })
-      this.onConfirmFinish()
+      this.onConfirmFinish();
+      const userResponse = await axios(`http://localhost:3001/auth`);
+      const goalResponse = await axios(`http://localhost:3001/goals`);
+      this.setState({
+        users: userResponse.data,
+        goals: goalResponse.data,
+        apiDataLoaded: true
+      });
       this.props.history.push('/feed');
     }
   }
