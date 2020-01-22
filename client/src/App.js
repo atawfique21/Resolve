@@ -72,8 +72,8 @@ class App extends React.Component {
         errorText: ''
       })
       this.onConfirmFinish();
-      const userResponse = await axios(`https://intense-sands-64987.herokuapp.com/auth`);
-      const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
+      const userResponse = await axios(`https://peaceful-forest-79984.herokuapp.com/auth`);
+      const goalResponse = await axios(`https://peaceful-forest-79984.herokuapp.com/goals`);
       this.setState({
         users: userResponse.data,
         goals: goalResponse.data,
@@ -141,8 +141,8 @@ class App extends React.Component {
   componentDidMount = async () => {
     this.handleVerify();
     try {
-      const userResponse = await axios(`https://intense-sands-64987.herokuapp.com/auth`);
-      const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
+      const userResponse = await axios(`https://peaceful-forest-79984.herokuapp.com/auth`);
+      const goalResponse = await axios(`https://peaceful-forest-79984.herokuapp.com/goals`);
       this.setState({
         users: userResponse.data,
         goals: goalResponse.data,

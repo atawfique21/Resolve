@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const api = Axios.create({
-  baseURL: "https://intense-sands-64987.herokuapp.com/"
+  baseURL: "https://peaceful-forest-79984.herokuapp.com/"
 })
 
 export const loginUser = async (loginData) => {

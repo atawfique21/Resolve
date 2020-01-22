@@ -30,7 +30,7 @@ class Feed extends Component {
 
   componentDidMount = async () => {
     try {
-      const userResponse = await axios(`https://intense-sands-64987.herokuapp.com/auth`);
+      const userResponse = await axios(`https://peaceful-forest-79984.herokuapp.com/auth`);
       this.setState({
         users: userResponse.data,
         apiDataLoaded: true

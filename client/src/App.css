@@ -134,6 +134,8 @@ header {
 .landingpage-content > img {
   /* margin: 50px; */
   margin: 7.5vw;
+  width: auto;
+  height: 300px;
 }
 
 .landingpage-content > h3 {
