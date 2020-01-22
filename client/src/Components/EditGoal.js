@@ -17,7 +17,7 @@ export default class EditGoal extends React.Component {
 
   componentDidMount = async () => {
     try {
-      const goalResponse = await axios(`http://localhost:3001/goals/${this.props.goalId}`);
+      const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals/${this.props.goalId}`);
       let goal = goalResponse.data;
       this.setState({
         title: goal.name,

@@ -22,7 +22,7 @@ export default class Profile extends Component {
 
   componentDidMount = async () => {
     try {
-      const goalResponse = await axios(`http://localhost:3001/goals`);
+      const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
       let goals = goalResponse.data;
       const user = this.props.users.find(user => {
         return user.id === parseInt(this.props.userId)
@@ -42,7 +42,7 @@ export default class Profile extends Component {
 
   handleDelete = async (goalToDelete) => {
     try {
-      await axios.delete(`http://localhost:3001/goals/${goalToDelete}`);
+      await axios.delete(`https://intense-sands-64987.herokuapp.com/goals/${goalToDelete}`);
       const goals = this.state.goals.filter(goal => (
         goal.id !== goalToDelete
       ))
@@ -74,7 +74,7 @@ export default class Profile extends Component {
           goals: [completedGoal, ...goals]
         })
       }
-      await axios.put(`http://localhost:3001/goals/${completedGoalId}`, completedGoal);
+      await axios.put(`https://intense-sands-64987.herokuapp.com/goals/${completedGoalId}`, completedGoal);
     } catch (e) {
       console.error(e);
     }
@@ -123,7 +123,7 @@ export default class Profile extends Component {
       user_id: this.props.currentUser.id
     }
     const currentGoal = await createGoal(goal);
-    const goalResponse = await axios(`http://localhost:3001/goals`);
+    const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
     let goals = goalResponse.data;
     goals = goals.filter(goal => {
       return goal.user_id === parseInt(this.props.userId)
@@ -142,10 +142,10 @@ export default class Profile extends Component {
       user_id: this.props.currentUser.id
     }
     const id = goalId;
-    const currentGoal = await axios.put(`http://localhost:3001/goals/${goalId}`, goal);
+    const currentGoal = await axios.put(`https://intense-sands-64987.herokuapp.com/goals/${goalId}`, goal);
 
     //returning the goals
-    const goalResponse = await axios(`http://localhost:3001/goals`);
+    const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
     let goals = goalResponse.data;
     goals = goals.filter(goal => {
       return goal.user_id === parseInt(this.props.userId)

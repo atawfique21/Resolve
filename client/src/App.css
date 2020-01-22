@@ -517,22 +517,6 @@ span.btn {
   color: whitesmoke;
 }
 
-.feedpage-controls > input:hover {
-  opacity: 85%;
-}
-
-.feedpage-controls > input:focus {
-  opacity: 85%;
-}
-
-.feedpage-controls > input:hover::placeholder {
-  opacity: 50%;
-}
-
-.feedpage-controls > input:focus::placeholder {
-  opacity: 30%;
-}
-
 .feedpage-controls > .submit {
   min-width: 2vw;
   margin-top: 0px;
