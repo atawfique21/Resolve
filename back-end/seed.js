@@ -33,6 +33,36 @@ const seed = async () => {
     profile_pic_url: "https://i.imgur.com/YzpBtSy.jpg",
   })
 
+  const user4 = await User.create({
+    username: "defaultmark",
+    password_digest: "$2b$11$QYdYrBQI8FQKUShSfd1urOf/1hGqWdMLIvs2rdhbj9Bq5h8m.IZiS",
+    first_name: "Mark",
+    last_name: "Cuban",
+    fun_fact: "I'm a shark on shark tank!",
+    location: "Cali",
+    profile_pic_url: "https://voxconferences.files.wordpress.com/2016/05/markcubansquare.jpg?quality=80&strip=info",
+  })
+
+  const user5 = await User.create({
+    username: "defaultnicole",
+    password_digest: "$2b$11$QYdYrBQI8FQKUShSfd1urOf/1hGqWdMLIvs2rdhbj9Bq5h8m.IZiS",
+    first_name: "Nicole",
+    last_name: "Cuban",
+    fun_fact: "I eat three smoothies a day.",
+    location: "NYC",
+    profile_pic_url: "https://randomuser.me/api/portraits/women/33.jpg",
+  })
+
+  const user6 = await User.create({
+    username: "defaultmax",
+    password_digest: "$2b$11$QYdYrBQI8FQKUShSfd1urOf/1hGqWdMLIvs2rdhbj9Bq5h8m.IZiS",
+    first_name: "Max",
+    last_name: "Air",
+    fun_fact: "I've lost five iPhones so far.",
+    location: "NYC",
+    profile_pic_url: "https://randomuser.me/api/portraits/women/14.jpg",
+  })
+
   await Goal.destroy({ where: {} })
 
   const goal1 = await Goal.create({
@@ -53,9 +83,25 @@ const seed = async () => {
 
   const goal3 = await Goal.create({
     user_id: 2,
-    name: "Read",
-    motivation: "I want to read more.",
-    plan: "Sign up for library card and borrow books.",
+    name: "Get in Shape",
+    motivation: "I've always wanted a more muscular body.",
+    plan: "Sign up for an expensive gym so that I force myself to go.",
+    is_complete: false,
+  })
+
+  const goal4 = await Goal.create({
+    user_id: 5,
+    name: "Keep track of my items",
+    motivation: "I lose a lot of my belongings.",
+    plan: "Before leaving work, I will double check to ensure I have everything..",
+    is_complete: false,
+  })
+
+  const goal5 = await Goal.create({
+    user_id: 6,
+    name: "Eat Healthier",
+    motivation: "I've gained a lot of wait since this time last year.",
+    plan: "Throw out all the junk food in the house.",
     is_complete: false,
   })
 
