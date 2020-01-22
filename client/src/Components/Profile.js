@@ -93,7 +93,7 @@ export default class Profile extends Component {
         title="Are you sure?"
         onConfirm={() => this.handleDelete(goalId)}
         onCancel={this.hideAlert}
-        focusCancelBtn
+        focusConfirmBtn
       >
         You will not be able to recover this goal!
       </SweetAlert>
