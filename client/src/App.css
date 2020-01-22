@@ -55,7 +55,7 @@ header {
 }
 
 .logo-desc:hover{
-  opacity: 90%;
+  opacity: .90;
   transform: scale(1.02);
 }
 
@@ -396,7 +396,7 @@ span.btn {
   text-decoration: none;
   /* font-size: 20px; */
   font-size: 1.5vw;
-  opacity: 50%;
+  opacity: .50;
   transition: all 0.15s ease-in-out;
   border-radius: 3px;
   /* padding: 8px; */
@@ -409,7 +409,7 @@ span.btn {
 }
 
 .btn:hover {
-  opacity: 100%;
+  opacity: 1.00;
 }
 
 .single-goal > h4 {
@@ -456,7 +456,7 @@ span.btn {
 .end {
   color: whitesmoke;
   text-align: center;
-  opacity: 70%;
+  opacity: .70;
   /* margin-top: 8em; */
   margin-top: 8vw;
 }
@@ -471,7 +471,7 @@ span.btn {
 .task-single-button {
   height: auto;
   max-width: 2.5em;
-  opacity: 60%;
+  opacity: .60;
   transition: all 0.35s ease-in-out;
   cursor: pointer;
   /* margin: 5px; */
@@ -485,7 +485,7 @@ span.btn {
 }
 
 .task-single-button:hover {
-  opacity: 100%;
+  opacity: 1.00;
 }
 
 .feedpage-controls {
@@ -503,10 +503,10 @@ span.btn {
   border-radius: 5px;
   border: hidden;
   outline: none;
-  background-color: #695ccd;
+  background-color: #8a7fd6;
   color: whitesmoke;
   /* padding: 10px; */
-  padding: .75vw;
+  padding: 1vw;
   /* font-size: 15px; */
   font-size: 1vw;
   font-weight: 500;
@@ -610,8 +610,7 @@ span.btn {
   cursor: pointer;
   position: absolute;
   display: block;
-  /* padding: 2px 5px; */
-  padding: .15vw .4vw;
+  padding: 2px 5px;
   /* line-height: 20px; */
   line-height: 1.5vw;
   /* right: -10px; */
@@ -640,3 +639,21 @@ span.btn {
   background-color: rgb(255, 48, 25);
 }
 /* POP UP FORM CSS */
+
+/* Media Query - Medium Screen */
+@media screen and (max-width: 1047px) {
+ 
+}
+/* Media Query - Small Screen */
+@media screen and (max-width: 769px) {
+
+  .logo-desc > h1 {
+    font-size: 10vw;
+  }
+
+  .header-buttons-container > a {
+    font-size: 3vw; 
+    margin: 2.5vw;
+  }
+
+}
