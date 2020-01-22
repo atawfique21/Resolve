@@ -93,7 +93,7 @@ export default class Profile extends Component {
         title="Are you sure?"
         onConfirm={() => this.handleDelete(goalId)}
         onCancel={this.hideAlert}
-        focusCancelBtn
+        focusConfirmBtn
       >
         You will not be able to recover this goal!
       </SweetAlert>
@@ -126,11 +126,12 @@ export default class Profile extends Component {
     const goalResponse = await axios(`http://localhost:3001/goals`);
     let goals = goalResponse.data;
     const user = this.props.users.find(user => {
-      return user.id === parseInt(this.props.userId)
+      return user.id === this.props.currentUser.id
     })
     goals = goals.filter(goal => {
-      return goal.user_id === parseInt(this.props.userId)
+      return goal.user_id === parseInt(this.props.currentUser.id)
     })
+    console.log(goals)
     this.setState({
       goals
     })
@@ -151,7 +152,7 @@ export default class Profile extends Component {
     const goalResponse = await axios(`http://localhost:3001/goals`);
     let goals = goalResponse.data;
     goals = goals.filter(goal => {
-      return goal.user_id === parseInt(this.props.userId)
+      return goal.user_id === parseInt(this.props.currentUser.id)
     })
     this.setState({
       goals
