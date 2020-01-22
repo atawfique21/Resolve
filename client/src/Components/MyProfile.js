@@ -123,6 +123,17 @@ export default class Profile extends Component {
       user_id: this.props.currentUser.id
     }
     const currentGoal = await createGoal(goal);
+    const goalResponse = await axios(`http://localhost:3001/goals`);
+    let goals = goalResponse.data;
+    const user = this.props.users.find(user => {
+      return user.id === parseInt(this.props.userId)
+    })
+    goals = goals.filter(goal => {
+      return goal.user_id === parseInt(this.props.userId)
+    })
+    this.setState({
+      goals
+    })
   }
 
   render() {
